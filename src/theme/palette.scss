@@ -1,0 +1,70 @@
+$black-87-opacity: rgba(black, 0.87);
+$white-87-opacity: rgba(white, 0.87);
+$black-12-opacity: rgba(black, 0.12);
+$white-12-opacity: rgba(white, 0.12);
+
+$vermelho: (
+		50 : #f6e6e5,
+		100 : #e8c1bf,
+		200 : #d99794,
+		300 : #c96d69,
+		400 : #be4e49,
+		500 : #b22f29,
+		600 : #ab2a24,
+		700 : #a2231f,
+		800 : #991d19,
+		900 : #8a120f,
+		A100 : #ffbcbb,
+		A200 : #ff8a88,
+		A400 : #ff5855,
+		A700 : #ff3f3b,
+		contrast: (
+				50 : $white-87-opacity,
+				100 : $white-87-opacity,
+				200 : $white-87-opacity,
+				300 : $white-87-opacity,
+				400 : white,
+				500 : white,
+				600 : white,
+				700 : white,
+				800 : white,
+				900 : white,
+				A100 : $white-87-opacity,
+				A200 : $white-87-opacity,
+				A400 : $white-87-opacity,
+				A700 : $white-87-opacity,
+		)
+);
+
+$dourado: (
+		50 : #f6f4e9,
+		100 : #eae3c9,
+		200 : #dcd0a5,
+		300 : #cdbd80,
+		400 : #c3af65,
+		500 : #b8a14a,
+		600 : #b19943,
+		700 : #a88f3a,
+		800 : #a08532,
+		900 : #917422,
+		A100 : #fff1cf,
+		A200 : #ffe39c,
+		A400 : #ffd569,
+		A700 : #ffce4f,
+		contrast: (
+				50 : $white-87-opacity,
+				100 : $white-87-opacity,
+				200 : $white-87-opacity,
+				300 : $white-87-opacity,
+				400 : white,
+				500 : white,
+				600 : white,
+				700 : white,
+				800 : white,
+				900 : white,
+				A100 : $white-87-opacity,
+				A200 : $white-87-opacity,
+				A400 : $white-87-opacity,
+				A700 : $white-87-opacity,
+		)
+);

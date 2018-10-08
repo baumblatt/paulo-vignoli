@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+@import "./palette.scss";
+
+$app-theme-primary: mat-palette($vermelho);
+$app-theme-accent: mat-palette($dourado);
+$app-theme-warn: mat-palette($mat-orange);
+
+// create theme (use mat-dark-theme for themes with dark backgrounds)
+$app-theme: mat-dark-theme(
+				$app-theme-primary,
+				$app-theme-accent,
+				$app-theme-warn
+);
