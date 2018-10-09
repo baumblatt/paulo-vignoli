@@ -5,9 +5,11 @@ import { CoreRoutingModule } from './core-routing.module';
 import { LayoutComponent } from './components/layout/layout.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatInputModule, MatSelectModule, MatRadioModule } from '@angular/material';
-import { HomeComponent } from './components/home/home.component';
-import { NovoAlunoComponent } from './components/novo-aluno/novo-aluno.component';
+import { HomeComponent } from './containers/home/home.component';
+import { NovoAlunoComponent } from './containers/novo-aluno/novo-aluno.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AlunosComponent } from './containers/alunos/alunos.component';
+import { AlunosListComponent } from './components/alunos-list/alunos-list.component';
 
 @NgModule({
   imports: [
@@ -27,6 +29,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatRadioModule,
     ReactiveFormsModule
   ],
-  declarations: [LayoutComponent, HomeComponent, NovoAlunoComponent]
+  declarations: [LayoutComponent, HomeComponent, NovoAlunoComponent, AlunosComponent, AlunosListComponent]
 })
 export class CoreModule { }
