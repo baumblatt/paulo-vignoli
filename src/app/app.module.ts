@@ -1,4 +1,7 @@
 import {NgModule} from '@angular/core';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {EffectsModule} from '@ngrx/effects';
@@ -19,8 +22,11 @@ import {globalReducer, metaReducers} from './store/reducers/global.reducer';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        StoreModule.forRoot(globalReducer, {metaReducers}),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireStorageModule,
+        AngularFirestoreModule,
         EffectsModule.forRoot([]),
+        StoreModule.forRoot(globalReducer, {metaReducers}),
         StoreRouterConnectingModule,
         StoreDevtoolsModule.instrument({name: 'Paulo Vignoli', logOnly: environment.production})
     ],
