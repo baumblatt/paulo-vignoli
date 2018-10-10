@@ -1,16 +1,19 @@
 import {Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 @Component({
-    selector: 'app-alunos',
-    templateUrl: './alunos.component.html',
-    styleUrls: ['./alunos.component.scss']
+  selector: 'app-alunos',
+  templateUrl: './alunos.component.html',
+  styleUrls: ['./alunos.component.scss']
 })
 export class AlunosComponent implements OnInit {
 
-    constructor() {
-    }
+  pesquisar = new FormControl();
 
-    ngOnInit() {
-    }
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
 
 }

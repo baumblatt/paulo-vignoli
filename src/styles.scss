@@ -14,20 +14,34 @@ $config: mat-typography-config();
 
 // specify theme class eg: <body class="app-theme"> ... </body>
 body.app-theme {
-	margin: 0;
+  margin: 0;
 
-	@include mat-typography-level-to-styles($config, body-1);
+  @include mat-typography-level-to-styles($config, body-1);
 
-	// use our theme with angular-material-theme mixin
-	@include angular-material-theme($app-theme);
+  // use our theme with angular-material-theme mixin
+  @include angular-material-theme($app-theme);
 
-	div.container-component {
-		height: calc(100vh - 64px);
+  div.container-component {
+    height: calc(100vh - 64px);
 
-		@media (max-width: 599px) {
-			height: calc(100vh - 56px);
-		}
-	}
+    @media (max-width: 599px) {
+      height: calc(100vh - 56px);
+    }
+
+    div.row {
+      display: flex;
+      flex-direction: row;
+    }
+
+    div.col {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    div.col:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
 
