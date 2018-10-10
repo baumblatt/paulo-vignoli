@@ -1,15 +1,27 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {LayoutModule} from '@angular/cdk/layout';
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatToolbarModule
+} from '@angular/material';
+import {AlunosListComponent} from './components/alunos-list/alunos-list.component';
+import {LayoutComponent} from './components/layout/layout.component';
+import {AlunosComponent} from './containers/alunos/alunos.component';
+import {HomeComponent} from './containers/home/home.component';
+import {NovoAlunoComponent} from './containers/novo-aluno/novo-aluno.component';
 
-import { CoreRoutingModule } from './core-routing.module';
-import { LayoutComponent } from './components/layout/layout.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatInputModule, MatSelectModule, MatRadioModule } from '@angular/material';
-import { HomeComponent } from './containers/home/home.component';
-import { NovoAlunoComponent } from './containers/novo-aluno/novo-aluno.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AlunosComponent } from './containers/alunos/alunos.component';
-import { AlunosListComponent } from './components/alunos-list/alunos-list.component';
+import {CoreRoutingModule} from './core-routing.module';
 
 @NgModule({
   imports: [
@@ -27,7 +39,7 @@ import { AlunosListComponent } from './components/alunos-list/alunos-list.compon
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    ReactiveFormsModule
+      ReactiveFormsModule,
   ],
   declarations: [LayoutComponent, HomeComponent, NovoAlunoComponent, AlunosComponent, AlunosListComponent]
 })
