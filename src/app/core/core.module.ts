@@ -13,6 +13,7 @@ import {
     MatRadioModule,
     MatSelectModule,
     MatSidenavModule,
+    MatSnackBarModule,
     MatToolbarModule
 } from '@angular/material';
 import {EffectsModule} from '@ngrx/effects';
@@ -25,13 +26,14 @@ import {NovoAlunoComponent} from './containers/novo-aluno/novo-aluno.component';
 
 import {CoreRoutingModule} from './core-routing.module';
 import {AlunosEffects} from './store/effects/alunos.effects';
+import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
 
 @NgModule({
     imports: [
         CommonModule,
         CoreRoutingModule,
-        EffectsModule.forFeature([AlunosEffects]),
+        EffectsModule.forFeature([AlunosEffects, UIEffects]),
         StoreModule.forFeature('core', globalReducer),
         LayoutModule,
         MatButtonModule,
@@ -42,6 +44,7 @@ import {globalReducer} from './store/reducers/global.reducer';
         MatListModule,
         MatMenuModule,
         MatRadioModule,
+        MatSnackBarModule,
         MatSelectModule,
         MatSidenavModule,
         MatToolbarModule,

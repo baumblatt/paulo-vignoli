@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {AlunosAction} from '../../models/action.model';
+import {CoreState} from '../../store/reducers/global.reducer';
 
 @Component({
     selector: 'app-novo-aluno',
@@ -15,6 +18,10 @@ export class NovoAlunoComponent {
         nascimento: null
     });
 
-    constructor(private fb: FormBuilder) {
+    constructor(private store: Store<CoreState>, private fb: FormBuilder) {
+    }
+
+    inserir() {
+        this.store.dispatch({type: AlunosAction.INSERIR, payload: this.alunoForm.getRawValue()});
     }
 }

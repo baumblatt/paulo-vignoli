@@ -2,6 +2,7 @@
 @import "./palette.scss";
 
 $app-theme-primary: mat-palette($vermelho);
+$app-theme-success: mat-palette($mat-green);
 $app-theme-accent: mat-palette($dourado);
 $app-theme-warn: mat-palette($mat-orange);
 

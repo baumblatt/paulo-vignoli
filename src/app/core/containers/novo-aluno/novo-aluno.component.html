@@ -1,5 +1,5 @@
 <div class="container-component">
-  <form [formGroup]="alunoForm" novalidate>
+  <form [formGroup]="alunoForm" (submit)="inserir()" novalidate>
     <mat-card>
       <mat-card-header>
         <mat-card-title>Informações do Aluno</mat-card-title>
