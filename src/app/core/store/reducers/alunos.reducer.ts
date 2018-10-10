@@ -1,10 +1,10 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
-import {AlunosAction, GenericAction} from '../models/action.model';
-import {Aluno} from '../models/aluno.model';
+import {AlunosAction, GenericAction} from '../../models/action.model';
+import {Aluno} from '../../models/aluno.model';
 
 export const alunosAdapter: EntityAdapter<Aluno> = createEntityAdapter<Aluno>({
     selectId: (a) => a.nome,
-    sortComparer: (a, b) => a.nome > b.nome ? -1 : 1,
+    sortComparer: (a, b) => a.nome < b.nome ? -1 : 1,
 });
 
 export interface AlunosState extends EntityState<Aluno> {

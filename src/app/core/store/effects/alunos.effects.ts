@@ -3,10 +3,13 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {Actions, Effect} from '@ngrx/effects';
 import {of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import {AlunosAction} from '../models/action.model';
+import {AlunosAction} from '../../models/action.model';
 
 @Injectable()
 export class AlunosEffects {
+
+    constructor(private actions$: Actions, private db: AngularFirestore) {
+    }
 
     @Effect()
     listar = this.db.collection('alunos').valueChanges().pipe(
@@ -19,7 +22,4 @@ export class AlunosEffects {
             payload: error
         })),
     );
-
-    constructor(private actions$: Actions, private db: AngularFirestore) {
-    }
 }

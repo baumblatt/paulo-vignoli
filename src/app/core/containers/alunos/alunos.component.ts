@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {Aluno} from '../../store/models/aluno.model';
+import {Aluno} from '../../models/aluno.model';
 import {CoreState} from '../../store/reducers/global.reducer';
 import {getAlunos} from '../../store/selectors/alunos.selectors';
 

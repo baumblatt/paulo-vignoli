@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Aluno} from '../../store/models/aluno.model';
+import {Aluno} from '../../models/aluno.model';
 
 @Component({
     selector: 'app-alunos-list',
