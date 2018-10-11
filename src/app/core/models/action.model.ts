@@ -9,6 +9,7 @@ export enum AlunosAction {
 
 export enum UIActions {
     SNACKBAR = '[UI] Apresentar snack bar',
+    NAVIGATE = '[UI] Navegar entre rotas'
 }
 
 export interface GenericAction extends Action {
