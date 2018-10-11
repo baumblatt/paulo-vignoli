@@ -1,52 +1,58 @@
 <div class="container-component">
-  <form [formGroup]="alunoForm" (submit)="inserir()" novalidate>
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Informações do Aluno</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="row">
-          <div class="col">
-            <mat-form-field>
-              <input matInput placeholder="Nome" formControlName="nome">
-              <mat-error *ngIf="alunoForm.controls['nome'].hasError('required')">
-               O nome é <strong>obrigatório</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <mat-form-field>
-              <input matInput placeholder="Responsavel" formControlName="responsavel">
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <mat-form-field>
-              <input matInput type="tel" placeholder="Telefone" formControlName="telefone">
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <mat-form-field>
-              <input matInput placeholder="Email" formControlName="email">
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <mat-form-field>
-              <input matInput type="date" placeholder="Data Nascimento" formControlName="nascimento">
-            </mat-form-field>
-          </div>
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Salvar</button>
-      </mat-card-actions>
-    </mat-card>
-  </form>
+	<form [formGroup]="alunoForm" (submit)="inserir()" novalidate>
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Informações do Aluno</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<div class="row">
+					<div class="col">
+						<input type="file" placeholder="foto" (change)="avatar($event)">
+						<mat-progress-bar mode="determinate" [value]="(avatar$ | async)?.percentage" *ngIf="(avatar$ | async)?.inProgress"></mat-progress-bar>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<mat-form-field>
+							<input matInput placeholder="Nome" formControlName="nome">
+							<mat-error *ngIf="alunoForm.controls['nome'].hasError('required')">
+								O nome é <strong>obrigatório</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<mat-form-field>
+							<input matInput placeholder="Responsavel" formControlName="responsavel">
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<mat-form-field>
+							<input matInput type="tel" placeholder="Telefone" formControlName="telefone">
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<mat-form-field>
+							<input matInput placeholder="Email" formControlName="email">
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<mat-form-field>
+							<input matInput type="date" placeholder="Data Nascimento" formControlName="nascimento">
+						</mat-form-field>
+					</div>
+				</div>
+			</mat-card-content>
+			<mat-card-actions>
+				<button mat-raised-button color="primary" type="submit">Salvar</button>
+			</mat-card-actions>
+		</mat-card>
+	</form>
 </div>
