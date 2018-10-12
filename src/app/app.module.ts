@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {globalReducer, metaReducers} from './store/reducers/global.reducer';
 import {CustomSerializer} from './store/reducers/router.reducer';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import {CustomSerializer} from './store/reducers/router.reducer';
         EffectsModule.forRoot([]),
         StoreModule.forRoot(globalReducer, {metaReducers}),
         StoreRouterConnectingModule,
-        StoreDevtoolsModule.instrument({name: 'Paulo Vignoli', logOnly: environment.production})
+        StoreDevtoolsModule.instrument({name: 'Paulo Vignoli', logOnly: environment.production}),
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [{provide: RouterStateSerializer, useClass: CustomSerializer}],
     bootstrap: [AppComponent]
