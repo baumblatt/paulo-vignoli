@@ -1,13 +1,12 @@
 import {AvatarActions, GenericAction} from '../../models/action.model';
 
 export interface AvatarState {
-    url: string;
+    url?: string;
     percentage: number;
     inProgress: boolean;
 }
 
 export const initialState: AvatarState = {
-    url: '/assets/images/no-photo.png',
     percentage: 0,
     inProgress: false,
 };
@@ -19,7 +18,7 @@ export function avatarReducer(state = initialState, action: GenericAction): Avat
         case 'ROUTER_NAVIGATION': {
             return {
                 ...state,
-                url: action.payload.event.url === '/core/novo-aluno' ? '/assets/images/no-photo.png' : state.url
+                url: action.payload.event.url === '/core/novo-aluno' ? '' : state.url
             };
         }
 

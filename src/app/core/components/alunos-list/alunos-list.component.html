@@ -1,5 +1,7 @@
 <mat-list>
-  <mat-list-item *ngFor="let aluno of alunos">
-    {{aluno.nome}}
+  <mat-list-item *ngFor="let aluno of alunos" [routerLink]="['/core/aluno', aluno.id]">
+    <img matListAvatar [src]="aluno.avatar || '/assets/images/no-photo.png'">
+    <h3 matLine>{{aluno.nome}}</h3>
+    <h4 matLine *ngIf="aluno.responsavel">Responsável: {{aluno.responsavel}}</h4>
   </mat-list-item>
 </mat-list>

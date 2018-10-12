@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 
 export enum AlunosAction {
-    INSERIR = '[Alunos] Inserir aluno.',
+    SALVAR = '[Alunos] Salvar aluno.',
     LISTAR = '[Alunos] Lista de alunos.',
     SUCESSO = '[Alunos] Transação realizada com sucesso.',
     ERROR = '[Alunos] Error na store de alunos.',

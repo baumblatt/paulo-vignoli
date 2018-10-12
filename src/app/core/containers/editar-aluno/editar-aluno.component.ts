@@ -1,10 +1,12 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
+import {filter, take, tap} from 'rxjs/operators';
 import {AlunosAction, AvatarActions} from '../../models/action.model';
 import {AvatarState} from '../../store/reducers/avatar.reducer';
 import {CoreState} from '../../store/reducers/global.reducer';
+import {getAluno} from '../../store/selectors/alunos.selectors';
 import {getAvatarState} from '../../store/selectors/avatar.selectors';
 
 @Component({
@@ -19,7 +21,8 @@ export class EditarAlunoComponent implements OnInit {
 
     avatarState$: Observable<AvatarState>;
 
-    alunoForm = this.fb.group({
+    alunoForm: FormGroup = this.fb.group({
+        id: null,
         avatar: null,
         nome: [null, Validators.required],
         responsavel: null,
@@ -32,11 +35,27 @@ export class EditarAlunoComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.avatarState$ = this.store.pipe(select(getAvatarState));
+        this.store.pipe(
+            select(getAluno),
+            filter(aluno => !!aluno),
+            take(1),
+        ).subscribe(aluno =>
+            this.alunoForm.setValue(aluno)
+        );
+
+        this.avatarState$ = this.store.pipe(
+            select(getAvatarState),
+            tap(state => {
+                    if (state.url) {
+                        this.alunoForm.get('avatar').setValue(state.url);
+                    }
+                }
+            ),
+        );
     }
 
     inserir() {
-        this.store.dispatch({type: AlunosAction.INSERIR, payload: this.alunoForm.getRawValue()});
+        this.store.dispatch({type: AlunosAction.SALVAR, payload: this.alunoForm.getRawValue()});
     }
 
     avatar() {

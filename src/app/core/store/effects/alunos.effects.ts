@@ -25,30 +25,33 @@ export class AlunosEffects {
     );
 
     @Effect()
-    inserir = this.actions$.pipe(
-        ofType(AlunosAction.INSERIR),
+    salvar = this.actions$.pipe(
+        ofType(AlunosAction.SALVAR),
         pluck('payload'),
-        switchMap((aluno: Aluno) => from(this.db.collection('alunos').add(aluno)).pipe(
-            mergeMapTo(from([{
-                type: UIActions.NAVIGATE, payload: ['core', 'alunos']
-            }, {
-                type: UIActions.SNACKBAR, payload: {
-                    message: 'Aluno inserido com sucesso', config: {
-                        duration: 4000, panelClass: ['mat-snack-bar-success']
+        switchMap((aluno: Aluno) => {
+            const id = aluno.id || this.db.createId();
+            return from(this.db.collection('alunos').doc(id).set({...aluno, id})).pipe(
+                mergeMapTo(from([{
+                    type: UIActions.NAVIGATE, payload: ['core', 'alunos']
+                }, {
+                    type: UIActions.SNACKBAR, payload: {
+                        message: 'Aluno salvo com sucesso', config: {
+                            duration: 4000, panelClass: ['mat-snack-bar-success']
+                        }
                     }
-                }
-            }, {
-                type: AlunosAction.SUCESSO
-            }])),
-            catchError((error) => from([{
-                type: UIActions.SNACKBAR, payload: {
-                    message: 'Ocorreu um problema ao processar sua requisição', config: {
-                        duration: 4000, panelClass: ['mat-snack-bar-warn']
+                }, {
+                    type: AlunosAction.SUCESSO
+                }])),
+                catchError((error) => from([{
+                    type: UIActions.SNACKBAR, payload: {
+                        message: 'Ocorreu um problema ao processar sua requisição', config: {
+                            duration: 4000, panelClass: ['mat-snack-bar-warn']
+                        }
                     }
-                }
-            }, {
-                type: AlunosAction.ERROR, payload: error
-            }])),
-        ))
+                }, {
+                    type: AlunosAction.ERROR, payload: error
+                }])),
+            );
+        })
     );
 }

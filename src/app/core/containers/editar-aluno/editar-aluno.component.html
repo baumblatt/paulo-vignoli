@@ -1,5 +1,5 @@
 <div class="container-component">
-	<form [formGroup]="alunoForm" (submit)="inserir()" novalidate>
+	<form [formGroup]="alunoForm" (submit)="inserir()" *ngIf="alunoForm" novalidate>
 		<mat-card>
 			<mat-card-header>
 				<mat-card-title>Informações do Aluno</mat-card-title>
@@ -7,7 +7,7 @@
 			<mat-card-content>
 				<div class="row" *ngIf="avatarState$ | async; let avatarState">
 					<div class="col">
-						<img [src]="avatarState.url" (click)="avatar()">
+						<img [src]="avatarState.url || '/assets/images/no-photo.png'" (click)="avatar()">
 						<input #avatarInput class="avatar" type="file" placeholder="foto" (change)="avatarChange($event)">
 						<mat-progress-bar mode="determinate" [value]="avatarState.percentage" *ngIf="avatarState.inProgress"></mat-progress-bar>
 					</div>
