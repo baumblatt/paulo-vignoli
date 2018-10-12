@@ -2,9 +2,8 @@ import {Injectable} from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
-import * as firebase from 'firebase';
 import {from, merge} from 'rxjs';
-import {filter, finalize, map, pluck, switchMap} from 'rxjs/operators';
+import {last, map, pluck, switchMap} from 'rxjs/operators';
 import {AvatarActions} from '../../models/action.model';
 import {CoreState} from '../reducers/global.reducer';
 
@@ -24,19 +23,18 @@ export class AvatarEffects {
                 task.percentageChanges().pipe(
                     map(percentage => ({
                         type: AvatarActions.PROGRESS,
-                        payload: percentage
+                        payload: percentage,
                     }))),
                 task.snapshotChanges().pipe(
-                    filter(snapshot => snapshot.task.snapshot.state !== firebase.storage.TaskState.RUNNING),
-                    finalize(() => from(this.storage.ref(`avatars/${file.name}`).getDownloadURL()).subscribe(
-                        (url) => this.store.dispatch({
+                    last(),
+                    switchMap(() => from(this.storage.ref(`avatars/${file.name}`).getDownloadURL()).pipe(
+                        map(url => ({
                             type: AvatarActions.COMPLETE,
-                            payload: url
-                        })
+                            payload: url,
+                        })),
                     )),
                 )
             );
         })
     );
-
 }
