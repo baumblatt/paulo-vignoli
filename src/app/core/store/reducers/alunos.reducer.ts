@@ -17,6 +17,7 @@ export function alunosReducer(state = initialState, action: GenericAction): Alun
 
     switch (action.type) {
 
+
         case AlunosAction.LISTAR: {
             return alunosAdapter.addAll(action.payload, state);
         }

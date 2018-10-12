@@ -20,6 +20,6 @@ export enum UIActions {
 }
 
 export interface GenericAction extends Action {
-    type: AlunosAction | AvatarActions | UIActions;
+    type: AlunosAction | AvatarActions | UIActions | 'ROUTER_NAVIGATION';
     payload?: any;
 }
