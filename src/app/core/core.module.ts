@@ -22,8 +22,8 @@ import {StoreModule} from '@ngrx/store';
 import {AlunosListComponent} from './components/alunos-list/alunos-list.component';
 import {LayoutComponent} from './components/layout/layout.component';
 import {AlunosComponent} from './containers/alunos/alunos.component';
+import {EditarAlunoComponent} from './containers/editar-aluno/editar-aluno.component';
 import {HomeComponent} from './containers/home/home.component';
-import {NovoAlunoComponent} from './containers/novo-aluno/novo-aluno.component';
 
 import {CoreRoutingModule} from './core-routing.module';
 import {AlunosEffects} from './store/effects/alunos.effects';
@@ -53,7 +53,7 @@ import {globalReducer} from './store/reducers/global.reducer';
         MatToolbarModule,
         ReactiveFormsModule,
     ],
-    declarations: [LayoutComponent, HomeComponent, NovoAlunoComponent, AlunosComponent, AlunosListComponent]
+    declarations: [LayoutComponent, HomeComponent, EditarAlunoComponent, AlunosComponent, AlunosListComponent]
 })
 export class CoreModule {
 }
