@@ -1,0 +1,28 @@
+div.container-component {
+
+	img {
+		margin-left: calc(50% - 125px);
+		width: 250px;
+
+		@media (max-width: 599px) {
+			margin-left: calc(50% - 125px);
+		}
+	}
+
+	input.avatar {
+		opacity: 0;
+		height: 0;
+	}
+
+	mat-form-field {
+		width: 100%;
+	}
+
+	.mat-radio-button {
+		display: block;
+		margin: 5px 0;
+	}
+}
+
+
+

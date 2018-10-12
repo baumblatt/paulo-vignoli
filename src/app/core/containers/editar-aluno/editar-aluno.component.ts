@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -8,13 +8,16 @@ import {CoreState} from '../../store/reducers/global.reducer';
 import {getAvatarState} from '../../store/selectors/avatar.selectors';
 
 @Component({
-    selector: 'app-novo-aluno',
-    templateUrl: './novo-aluno.component.html',
-    styleUrls: ['./novo-aluno.component.scss']
+    selector: 'app-editar-aluno',
+    templateUrl: './editar-aluno.component.html',
+    styleUrls: ['./editar-aluno.component.scss']
 })
-export class NovoAlunoComponent implements OnInit {
+export class EditarAlunoComponent implements OnInit {
 
-    avatar$: Observable<AvatarState>;
+    @ViewChild('avatarInput')
+    avatarInput: ElementRef;
+
+    avatarState$: Observable<AvatarState>;
 
     alunoForm = this.fb.group({
         avatar: null,
@@ -29,14 +32,18 @@ export class NovoAlunoComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.avatar$ = this.store.pipe(select(getAvatarState));
+        this.avatarState$ = this.store.pipe(select(getAvatarState));
     }
 
     inserir() {
         this.store.dispatch({type: AlunosAction.INSERIR, payload: this.alunoForm.getRawValue()});
     }
 
-    avatar(event) {
+    avatar() {
+        this.avatarInput.nativeElement.click();
+    }
+
+    avatarChange(event) {
         this.store.dispatch({type: AvatarActions.UPLOAD, payload: event.target.files[0]});
     }
 }

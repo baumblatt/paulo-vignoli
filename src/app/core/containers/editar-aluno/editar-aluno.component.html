@@ -5,10 +5,11 @@
 				<mat-card-title>Informações do Aluno</mat-card-title>
 			</mat-card-header>
 			<mat-card-content>
-				<div class="row">
+				<div class="row" *ngIf="avatarState$ | async; let avatarState">
 					<div class="col">
-						<input type="file" placeholder="foto" (change)="avatar($event)">
-						<mat-progress-bar mode="determinate" [value]="(avatar$ | async)?.percentage" *ngIf="(avatar$ | async)?.inProgress"></mat-progress-bar>
+						<img [src]="avatarState.url" (click)="avatar()">
+						<input #avatarInput class="avatar" type="file" placeholder="foto" (change)="avatarChange($event)">
+						<mat-progress-bar mode="determinate" [value]="avatarState.percentage" *ngIf="avatarState.inProgress"></mat-progress-bar>
 					</div>
 				</div>
 				<div class="row">
