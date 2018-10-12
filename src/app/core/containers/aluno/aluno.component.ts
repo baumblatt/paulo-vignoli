@@ -10,11 +10,11 @@ import {getAluno} from '../../store/selectors/alunos.selectors';
 import {getAvatarState} from '../../store/selectors/avatar.selectors';
 
 @Component({
-    selector: 'app-editar-aluno',
-    templateUrl: './editar-aluno.component.html',
-    styleUrls: ['./editar-aluno.component.scss']
+    selector: 'app-aluno',
+    templateUrl: './aluno.component.html',
+    styleUrls: ['./aluno.component.scss']
 })
-export class EditarAlunoComponent implements OnInit {
+export class AlunoComponent implements OnInit {
 
     @ViewChild('avatarInput')
     avatarInput: ElementRef;

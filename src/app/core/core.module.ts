@@ -15,14 +15,15 @@ import {
     MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule,
+    MatTabsModule,
     MatToolbarModule
 } from '@angular/material';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {AlunosListComponent} from './components/alunos-list/alunos-list.component';
 import {LayoutComponent} from './components/layout/layout.component';
+import {AlunoComponent} from './containers/aluno/aluno.component';
 import {AlunosComponent} from './containers/alunos/alunos.component';
-import {EditarAlunoComponent} from './containers/editar-aluno/editar-aluno.component';
 import {HomeComponent} from './containers/home/home.component';
 
 import {CoreRoutingModule} from './core-routing.module';
@@ -50,10 +51,11 @@ import {globalReducer} from './store/reducers/global.reducer';
         MatSnackBarModule,
         MatSelectModule,
         MatSidenavModule,
+        MatTabsModule,
         MatToolbarModule,
         ReactiveFormsModule,
     ],
-    declarations: [LayoutComponent, HomeComponent, EditarAlunoComponent, AlunosComponent, AlunosListComponent]
+    declarations: [LayoutComponent, HomeComponent, AlunoComponent, AlunosComponent, AlunosListComponent]
 })
 export class CoreModule {
 }

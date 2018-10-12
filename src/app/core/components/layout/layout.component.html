@@ -1,3 +1,9 @@
+<mat-toolbar color="primary">
+  <button type="button" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span routerLink="/core/home">Paulo Vignoli</span>
+</mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" [fixedInViewport]="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
@@ -10,12 +16,6 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button type="button" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span routerLink="/core/home">Paulo Vignoli</span>
-    </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

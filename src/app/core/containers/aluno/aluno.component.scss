@@ -1,5 +1,10 @@
 div.container-component {
 
+	mat-card {
+		min-height: calc(100vh - 58px - 48px);
+		box-sizing: border-box;
+	}
+
 	img {
 		margin-left: calc(50% - 125px);
 		border-radius: 50%;
