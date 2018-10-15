@@ -15,8 +15,8 @@
             </mat-menu>
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Em breve</div>
+        <mat-card-content>
+          <app-aniversariantes [alunos]="aniversariantes$ | async"></app-aniversariantes>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

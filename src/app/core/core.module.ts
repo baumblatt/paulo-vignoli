@@ -31,6 +31,7 @@ import {AlunosEffects} from './store/effects/alunos.effects';
 import {AvatarEffects} from './store/effects/avatar.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
+import { AniversariantesComponent } from './components/aniversariantes/aniversariantes.component';
 
 @NgModule({
     imports: [
@@ -55,7 +56,7 @@ import {globalReducer} from './store/reducers/global.reducer';
         MatToolbarModule,
         ReactiveFormsModule,
     ],
-    declarations: [LayoutComponent, HomeComponent, AlunoComponent, AlunosComponent, AlunosListComponent]
+    declarations: [LayoutComponent, HomeComponent, AlunoComponent, AlunosComponent, AlunosListComponent, AniversariantesComponent]
 })
 export class CoreModule {
 }
