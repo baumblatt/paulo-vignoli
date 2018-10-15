@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import * as moment from 'moment';
 import {Aluno} from '../../models/aluno.model';
 
 @Component({
@@ -6,11 +7,15 @@ import {Aluno} from '../../models/aluno.model';
     templateUrl: './aniversariantes.component.html',
     styleUrls: ['./aniversariantes.component.scss']
 })
-export class AniversariantesComponent{
+export class AniversariantesComponent {
 
     @Input()
     alunos: Aluno[];
 
     constructor() {
+    }
+
+    now() {
+        return moment();
     }
 }

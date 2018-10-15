@@ -1,7 +1,10 @@
-<mat-list>
+<mat-list *ngIf="alunos.length; else placeholder">
   <mat-list-item *ngFor="let aluno of alunos" [routerLink]="['/core/aluno', aluno.id]">
     <img matListAvatar [src]="aluno.avatar || '/assets/images/no-photo.png'">
     <h3 matLine>{{aluno.nome}}</h3>
     <h4 matLine>{{aluno.nascimento | date : 'dd/MM/yyyy'}}</h4>
   </mat-list-item>
 </mat-list>
+<ng-template #placeholder>
+  Não há aniversariantes em {{now().format('MMMM')}}.
+</ng-template>
