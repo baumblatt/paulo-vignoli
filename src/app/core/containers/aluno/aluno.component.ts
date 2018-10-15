@@ -28,7 +28,8 @@ export class AlunoComponent implements OnInit {
         responsavel: null,
         telefone: null,
         email: [null, Validators.email],
-        nascimento: null
+        nascimento: null,
+        pagamento: [null, Validators.required],
     });
 
     constructor(private store: Store<CoreState>, private fb: FormBuilder) {

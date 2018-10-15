@@ -4,5 +4,6 @@ export class Aluno {
     responsavel = '';
     telefone = '';
     nascimento?: Date;
+    pagamento: number;
     avatar = '/assets/images/no-photo.png';
 }
