@@ -2,8 +2,11 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Digite o nome aqui..." [formControl]="pesquisar">
+        <mat-form-field>
+          <input matInput placeholder="Digite o nome aqui..." [formControl]="filtrar">
+          <button mat-button matSuffix mat-icon-button (click)="filtrar.patchValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
         </mat-form-field>
       </mat-card-title>
     </mat-card-header>
@@ -11,5 +14,6 @@
       <app-alunos-list [alunos]="alunos$ | async"></app-alunos-list>
     </mat-card-content>
   </mat-card>
+  <button mat-mini-fab routerLink="/core/novo-aluno"><mat-icon>add</mat-icon></button>
 </div>
 
