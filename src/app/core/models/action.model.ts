@@ -15,9 +15,18 @@ export enum AvatarActions {
     ERROR = '[Avatar] Error ao realizar upload de arquivo.',
 }
 
+export enum PagamentoActions {
+  NOVO = '[Pagamento] Novo pagamento.',
+  INSERIR = '[Pagamento] Inserir novo pagamento.',
+  LISTAR = '[Pagamento] Listar paramentos.',
+  SUCESSO = '[Pagamento] Transação realizada com sucesso.',
+  ERROR = '[Pagamento] Error na store de pagamentos.',
+}
+
 export enum UIActions {
     SNACKBAR = '[UI] Apresentar snack bar.',
-    NAVIGATE = '[UI] Navegar entre rotas.'
+    NAVIGATE = '[UI] Navegar entre rotas.',
+    EMPTY = '[UI] Ação vazia (nada a fazer).',
 }
 
 export interface GenericAction extends Action {

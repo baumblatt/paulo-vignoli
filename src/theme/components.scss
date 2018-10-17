@@ -1,4 +1,4 @@
 @import '~@angular/material/theming';
 
-@import 'mat-snack-bar.theme';
-@include mat-snack-bar-theme($app-theme)
+@import 'app-material.theme';
+@include app-material-theme($app-theme);

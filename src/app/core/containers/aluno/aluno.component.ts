@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {filter, take, tap} from 'rxjs/operators';
-import {AlunosAction, AvatarActions} from '../../models/action.model';
+import {AlunosAction, AvatarActions, PagamentoActions} from '../../models/action.model';
 import {AvatarState} from '../../store/reducers/avatar.reducer';
 import {CoreState} from '../../store/reducers/global.reducer';
 import {getAluno} from '../../store/selectors/alunos.selectors';
@@ -56,7 +56,9 @@ export class AlunoComponent implements OnInit {
     }
 
     inserir() {
-        this.store.dispatch({type: AlunosAction.SALVAR, payload: this.alunoForm.getRawValue()});
+        if (this.alunoForm.valid) {
+            this.store.dispatch({type: AlunosAction.SALVAR, payload: this.alunoForm.getRawValue()});
+        }
     }
 
     avatar() {
@@ -65,5 +67,9 @@ export class AlunoComponent implements OnInit {
 
     avatarChange(event) {
         this.store.dispatch({type: AvatarActions.UPLOAD, payload: event.target.files[0]});
+    }
+
+    novoPagamento() {
+        this.store.dispatch({type: PagamentoActions.NOVO});
     }
 }

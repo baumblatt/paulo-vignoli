@@ -1,0 +1,125 @@
+// Import all the tools needed to customize the theme and extract parts of it
+@import '~@angular/material/theming';
+
+@mixin app-material-theme($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+	$warn: map-get($theme, warn);
+
+	body.app-theme {
+
+		// ---------------------
+		// Buttons customizations
+		// ---------------------
+		button.mat-mini-fab {
+			position: fixed;
+			right: 25px;
+			bottom: 25px;
+		}
+
+		// ---------------------
+		// Dialog customizations
+		// ---------------------
+		mat-dialog-container.mat-dialog-container {
+			padding: 0;
+		}
+
+		// ---------------------
+		// Forms customizations
+		// ---------------------
+		mat-form-field {
+			width: 100%;
+		}
+		// ---------------------
+		// Grid customizations
+		// ---------------------
+		mat-grid-tile.mat-grid-tile {
+
+			&.align-left {
+				figure.mat-figure {
+					justify-content: left;
+				}
+			}
+
+			&.align-right {
+				figure.mat-figure {
+					justify-content: flex-end;
+				}
+			}
+		}
+
+		// --------------------
+		// Icons customizations
+		// ---------------------
+		mat-icon.mat-icon, mat-icon.mat-list-icon, .mat-list .mat-list-item mat-icon.mat-list-icon {
+			&.size-12 {
+				width: 12px;
+				height: 12px;
+				line-height: 12px;
+			}
+
+			&.size-14 {
+				width: 14px;
+				height: 14px;
+				line-height: 14px;
+			}
+
+			&.size-16 {
+				width: 16px;
+				height: 16px;
+				line-height: 14px;
+			}
+
+			&.size-65 {
+				width: 65px;
+				height: 65px;
+				line-height: 65px;
+			}
+		}
+
+		// --------------------
+		// List customizations
+		// ---------------------
+		mat-list.mat-list mat-list-item.mat-list-item {
+			&:not(:last-child) {
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+			}
+		}
+
+		mat-list.mat-list.no-text-truncating .mat-list-item .mat-line {
+			word-wrap: break-word;
+			white-space: pre-wrap;
+		}
+
+		mat-list.mat-list {
+			mat-list-item.mat-list-item.no-padding {
+				div.mat-list-item-content {
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
+		}
+
+		// --------------------
+		// Snack bar customizations
+		// ---------------------
+		.mat-snack-bar-container {
+			&.mat-snack-bar-primary {
+				background-color: mat-color($primary, 600);
+				color: mat-contrast($primary, 600);
+			}
+			&.mat-snack-bar-success {
+				background-color: mat-color($app-theme-success, 600);
+				color: mat-contrast($app-theme-success, 600);
+			}
+			&.mat-snack-bar-accent {
+				background-color: mat-color($accent, 600);
+				color: mat-contrast($accent, 600);
+			}
+			&.mat-snack-bar-warn {
+				background-color: mat-color($warn, 600);
+				color: mat-contrast($warn, 600);
+			}
+		}
+	}
+}

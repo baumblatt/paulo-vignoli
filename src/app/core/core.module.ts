@@ -5,6 +5,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {
     MatButtonModule,
     MatCardModule,
+    MatDialogModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
@@ -21,7 +22,9 @@ import {
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {AlunosListComponent} from './components/alunos-list/alunos-list.component';
+import {AniversariantesComponent} from './components/aniversariantes/aniversariantes.component';
 import {LayoutComponent} from './components/layout/layout.component';
+import {PagamentoComponent} from './components/pagamento/pagamento.component';
 import {AlunoComponent} from './containers/aluno/aluno.component';
 import {AlunosComponent} from './containers/alunos/alunos.component';
 import {HomeComponent} from './containers/home/home.component';
@@ -31,17 +34,18 @@ import {AlunosEffects} from './store/effects/alunos.effects';
 import {AvatarEffects} from './store/effects/avatar.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
-import { AniversariantesComponent } from './components/aniversariantes/aniversariantes.component';
+import {PagamentoEffects} from './store/effects/pagamento.effects';
 
 @NgModule({
     imports: [
         CommonModule,
         CoreRoutingModule,
-        EffectsModule.forFeature([AlunosEffects, AvatarEffects, UIEffects]),
+        EffectsModule.forFeature([AlunosEffects, AvatarEffects, PagamentoEffects, UIEffects]),
         StoreModule.forFeature('core', globalReducer),
         LayoutModule,
         MatButtonModule,
         MatCardModule,
+        MatDialogModule,
         MatGridListModule,
         MatIconModule,
         MatInputModule,
@@ -54,9 +58,18 @@ import { AniversariantesComponent } from './components/aniversariantes/aniversar
         MatSidenavModule,
         MatTabsModule,
         MatToolbarModule,
-        ReactiveFormsModule,
+        ReactiveFormsModule
     ],
-    declarations: [LayoutComponent, HomeComponent, AlunoComponent, AlunosComponent, AlunosListComponent, AniversariantesComponent]
+    declarations: [
+        LayoutComponent,
+        HomeComponent,
+        AlunoComponent,
+        AlunosComponent,
+        AlunosListComponent,
+        AniversariantesComponent,
+        PagamentoComponent
+    ],
+    entryComponents: [PagamentoComponent]
 })
 export class CoreModule {
 }
