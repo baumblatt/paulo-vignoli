@@ -1,14 +1,20 @@
 import {Injectable} from '@angular/core';
-import {Actions, Effect, ofType} from '@ngrx/effects';
-import {PagamentoActions, UIActions} from '../../models/action.model';
-import {map, switchMap} from 'rxjs/operators';
+import {AngularFirestore} from '@angular/fire/firestore';
 import {MatDialog} from '@angular/material';
+import {Actions, Effect, ofType} from '@ngrx/effects';
+import {select, Store} from '@ngrx/store';
+import {of} from 'rxjs';
+import {map, pluck, switchMap} from 'rxjs/operators';
 import {PagamentoComponent} from '../../components/pagamento/pagamento.component';
+import {PagamentoActions, UIActions} from '../../models/action.model';
+import {Pagamento} from '../../models/pagamento.model';
+import {CoreState} from '../reducers/global.reducer';
+import {getAlunoState} from '../selectors/alunos.selectors';
 
 @Injectable()
 export class PagamentoEffects {
 
-    constructor(private actions$: Actions, private dialog: MatDialog) {
+    constructor(private actions$: Actions, private db: AngularFirestore, private dialog: MatDialog, private store: Store<CoreState>) {
     }
 
     @Effect()
@@ -31,6 +37,22 @@ export class PagamentoEffects {
                 }
             }
         )),
+    );
+
+    @Effect()
+    listar = this.store.pipe(
+        select(getAlunoState),
+        pluck('selecionado'),
+        switchMap(aluno => {
+                if (!aluno) {
+                    return of({type: PagamentoActions.LISTAR, payload: []});
+                } else {
+                    return this.db.collection<Pagamento[]>(`alunos/${aluno}/pagamentos`).valueChanges().pipe(
+                        map(pagamentos => ({type: PagamentoActions.LISTAR, payload: pagamentos}))
+                    );
+                }
+            }
+        ),
     );
 
 }

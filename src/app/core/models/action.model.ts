@@ -18,7 +18,7 @@ export enum AvatarActions {
 export enum PagamentoActions {
   NOVO = '[Pagamento] Novo pagamento.',
   INSERIR = '[Pagamento] Inserir novo pagamento.',
-  LISTAR = '[Pagamento] Listar paramentos.',
+  LISTAR = '[Pagamento] Listar pagamentos.',
   SUCESSO = '[Pagamento] Transação realizada com sucesso.',
   ERROR = '[Pagamento] Error na store de pagamentos.',
 }
@@ -30,6 +30,6 @@ export enum UIActions {
 }
 
 export interface GenericAction extends Action {
-    type: AlunosAction | AvatarActions | UIActions | 'ROUTER_NAVIGATION';
+    type: AlunosAction | AvatarActions | PagamentoActions | UIActions | 'ROUTER_NAVIGATION';
     payload?: any;
 }
