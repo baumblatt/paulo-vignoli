@@ -4,10 +4,12 @@ import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {filter, take, tap} from 'rxjs/operators';
 import {AlunosAction, AvatarActions, PagamentoActions} from '../../models/action.model';
+import {Pagamento} from '../../models/pagamento.model';
 import {AvatarState} from '../../store/reducers/avatar.reducer';
 import {CoreState} from '../../store/reducers/global.reducer';
 import {getAluno} from '../../store/selectors/alunos.selectors';
 import {getAvatarState} from '../../store/selectors/avatar.selectors';
+import {getPagamentos} from '../../store/selectors/pagamentos.selectors';
 
 @Component({
     selector: 'app-aluno',
@@ -20,6 +22,8 @@ export class AlunoComponent implements OnInit {
     avatarInput: ElementRef;
 
     avatarState$: Observable<AvatarState>;
+
+    pagamentos$: Observable<Pagamento[]>;
 
     alunoForm: FormGroup = this.fb.group({
         id: null,
@@ -52,6 +56,10 @@ export class AlunoComponent implements OnInit {
                     }
                 }
             ),
+        );
+
+        this.pagamentos$ = this.store.pipe(
+            select(getPagamentos),
         );
     }
 

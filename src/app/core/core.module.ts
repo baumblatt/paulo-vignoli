@@ -35,6 +35,7 @@ import {AvatarEffects} from './store/effects/avatar.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
 import {PagamentoEffects} from './store/effects/pagamento.effects';
+import { PagamentosListComponent } from './components/pagamentos-list/pagamentos-list.component';
 
 @NgModule({
     imports: [
@@ -67,7 +68,8 @@ import {PagamentoEffects} from './store/effects/pagamento.effects';
         AlunosComponent,
         AlunosListComponent,
         AniversariantesComponent,
-        PagamentoComponent
+        PagamentoComponent,
+        PagamentosListComponent
     ],
     entryComponents: [PagamentoComponent]
 })

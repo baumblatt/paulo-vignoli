@@ -70,7 +70,7 @@
 		<mat-tab label="Pagamento">
 			<mat-card>
 				<mat-card-content>
-					Breve
+					<app-pagamentos-list [pagamentos]="pagamentos$ | async"></app-pagamentos-list>
 				</mat-card-content>
 			</mat-card>
       		<button mat-mini-fab (click)="novoPagamento()"><mat-icon>payment</mat-icon></button>

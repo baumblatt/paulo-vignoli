@@ -1,0 +1,6 @@
+<mat-list>
+	<mat-list-item *ngFor="let pagamento of pagamentos">
+		<mat-icon mat-list-icon>payment</mat-icon>
+		{{pagamento.referencia | date : 'MMM/yy'}} - {{pagamento.data | date:'dd/MM/yy' }} - R$ {{pagamento.valor | number:'1.2-2':'pt_br'}}
+	</mat-list-item>
+</mat-list>
