@@ -1,9 +1,13 @@
+import {registerLocaleData} from '@angular/common';
+import localeBRExtra from '@angular/common/locales/extra/pt';
+import localeBR from '@angular/common/locales/pt';
 import {NgModule} from '@angular/core';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ServiceWorkerModule} from '@angular/service-worker';
 import {EffectsModule} from '@ngrx/effects';
 import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreModule} from '@ngrx/store';
@@ -14,7 +18,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {globalReducer, metaReducers} from './store/reducers/global.reducer';
 import {CustomSerializer} from './store/reducers/router.reducer';
-import { ServiceWorkerModule } from '@angular/service-worker';
+
+registerLocaleData(localeBR, 'pt', localeBRExtra);
 
 @NgModule({
     declarations: [
