@@ -1,7 +1,7 @@
 import {registerLocaleData} from '@angular/common';
 import localeBRExtra from '@angular/common/locales/extra/pt';
 import localeBR from '@angular/common/locales/pt';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
@@ -38,7 +38,7 @@ registerLocaleData(localeBR, 'pt', localeBRExtra);
         StoreDevtoolsModule.instrument({name: 'Paulo Vignoli', logOnly: environment.production}),
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
-    providers: [{provide: RouterStateSerializer, useClass: CustomSerializer}],
+    providers: [{provide: RouterStateSerializer, useClass: CustomSerializer}, {provide: LOCALE_ID, useValue: 'pt_BR'}],
     bootstrap: [AppComponent]
 })
 export class AppModule {

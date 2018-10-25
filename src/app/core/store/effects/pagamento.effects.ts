@@ -4,12 +4,12 @@ import {MatDialog} from '@angular/material';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {select, Store} from '@ngrx/store';
 import {of} from 'rxjs';
-import {map, pluck, switchMap} from 'rxjs/operators';
+import {exhaustMap, map, pluck, switchMap, withLatestFrom} from 'rxjs/operators';
 import {PagamentoComponent} from '../../components/pagamento/pagamento.component';
 import {PagamentoActions, UIActions} from '../../models/action.model';
 import {Pagamento} from '../../models/pagamento.model';
 import {CoreState} from '../reducers/global.reducer';
-import {getAlunoState} from '../selectors/alunos.selectors';
+import {getSelecionado} from '../selectors/alunos.selectors';
 
 @Injectable()
 export class PagamentoEffects {
@@ -29,10 +29,16 @@ export class PagamentoEffects {
     @Effect()
     inserir = this.actions$.pipe(
         ofType(PagamentoActions.INSERIR),
+        pluck('payload'),
+        withLatestFrom(this.store.pipe(select(getSelecionado))),
+        exhaustMap(([pagamento, aluno]) => {
+            const id = this.db.createId();
+            return this.db.collection(`alunos/${aluno}/pagamentos`).add({id, ...pagamento});
+        }),
         map(() => ({
                 type: UIActions.SNACKBAR, payload: {
-                    message: 'Não implementado ainda!', config: {
-                        duration: 4000, panelClass: ['mat-snack-bar-warn']
+                    message: 'Pagamento incluído com sucesso', config: {
+                        duration: 4000, panelClass: ['mat-snack-bar-success']
                     }
                 }
             }
@@ -41,8 +47,7 @@ export class PagamentoEffects {
 
     @Effect()
     listar = this.store.pipe(
-        select(getAlunoState),
-        pluck('selecionado'),
+        select(getSelecionado),
         switchMap(aluno => {
                 if (!aluno) {
                     return of({type: PagamentoActions.LISTAR, payload: []});

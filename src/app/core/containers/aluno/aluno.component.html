@@ -68,12 +68,13 @@
 			</form>
 		</mat-tab>
 		<mat-tab label="Pagamento">
-			<mat-card>
+			<mat-card *ngIf="pagamentos$ | async as pagamentos">
 				<mat-card-content>
-					<app-pagamentos-list [pagamentos]="pagamentos$ | async"></app-pagamentos-list>
+					<app-pagamentos-list [pagamentos]="pagamentos" *ngIf="pagamentos.length; else semPagamentos"></app-pagamentos-list>
+					<ng-template #semPagamentos><h4 class="mat-h4">Não há pagamentos registrados.</h4></ng-template>
 				</mat-card-content>
 			</mat-card>
-      		<button mat-mini-fab (click)="novoPagamento()"><mat-icon>payment</mat-icon></button>
+      		<button mat-mini-fab (click)="novoPagamento()"><mat-icon>add</mat-icon></button>
 		</mat-tab>
 		<mat-tab label="Frequência">
 			<mat-card>

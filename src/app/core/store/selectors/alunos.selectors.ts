@@ -26,6 +26,11 @@ export const getAlunos = createSelector(
     state => alunosAdapter.getSelectors().selectAll(state)
 );
 
+export const getSelecionado = createSelector(
+    getAlunoState,
+    state => state.selecionado
+);
+
 export const getAluno = createSelector(
     getAlunoState,
     state => state.entities[state.selecionado]
