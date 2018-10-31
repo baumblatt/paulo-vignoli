@@ -18,7 +18,9 @@ export enum AvatarActions {
 export enum PagamentoActions {
   NOVO = '[Pagamento] Novo pagamento.',
   INSERIR = '[Pagamento] Inserir novo pagamento.',
-  LISTAR = '[Pagamento] Listar pagamentos.',
+  POR_ALUNO = '[Pagamento] Listar pagamentos por aluno.',
+  POR_REFERENCIA = '[Pagamento] Listar pagamentos por referência.',
+  POR_DATA = '[Pagamento] Listar pagamentos por data de pagamento.',
   SUCESSO = '[Pagamento] Transação realizada com sucesso.',
   ERROR = '[Pagamento] Error na store de pagamentos.',
 }

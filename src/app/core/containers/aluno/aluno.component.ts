@@ -9,7 +9,7 @@ import {AvatarState} from '../../store/reducers/avatar.reducer';
 import {CoreState} from '../../store/reducers/global.reducer';
 import {getAluno} from '../../store/selectors/alunos.selectors';
 import {getAvatarState} from '../../store/selectors/avatar.selectors';
-import {getPagamentos} from '../../store/selectors/pagamentos.selectors';
+import {getPagamentosPorAluno} from '../../store/selectors/pagamentos.selectors';
 
 @Component({
     selector: 'app-aluno',
@@ -59,7 +59,7 @@ export class AlunoComponent implements OnInit {
         );
 
         this.pagamentos$ = this.store.pipe(
-            select(getPagamentos),
+            select(getPagamentosPorAluno),
         );
     }
 

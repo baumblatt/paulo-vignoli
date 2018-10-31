@@ -10,6 +10,8 @@ import {PagamentoActions, UIActions} from '../../models/action.model';
 import {Pagamento} from '../../models/pagamento.model';
 import {CoreState} from '../reducers/global.reducer';
 import {getSelecionado} from '../selectors/alunos.selectors';
+import {getReferencia} from '../selectors/pagamentos.selectors';
+import * as moment from 'moment';
 
 @Injectable()
 export class PagamentoEffects {
@@ -31,9 +33,9 @@ export class PagamentoEffects {
         ofType(PagamentoActions.INSERIR),
         pluck('payload'),
         withLatestFrom(this.store.pipe(select(getSelecionado))),
-        exhaustMap(([pagamento, aluno]) => {
+        exhaustMap(([pagamento, aluno]: [any, string]) => {
             const id = this.db.createId();
-            return this.db.collection(`alunos/${aluno}/pagamentos`).add({id, ...pagamento});
+            return this.db.doc(`pagamentos/${id}`).set({...pagamento, id, aluno, data: new Date(pagamento.data)});
         }),
         map(() => ({
                 type: UIActions.SNACKBAR, payload: {
@@ -46,18 +48,43 @@ export class PagamentoEffects {
     );
 
     @Effect()
-    listar = this.store.pipe(
+    porAluno = this.store.pipe(
         select(getSelecionado),
         switchMap(aluno => {
                 if (!aluno) {
-                    return of({type: PagamentoActions.LISTAR, payload: []});
+                    return of({type: PagamentoActions.POR_ALUNO, payload: []});
                 } else {
-                    return this.db.collection<Pagamento[]>(`alunos/${aluno}/pagamentos`).valueChanges().pipe(
-                        map(pagamentos => ({type: PagamentoActions.LISTAR, payload: pagamentos}))
+                    return this.db.collection<Pagamento[]>(`pagamentos`,
+                        ref => ref.where('aluno', '==', aluno)).valueChanges().pipe(
+                        map(pagamentos => ({type: PagamentoActions.POR_ALUNO, payload: pagamentos}))
                     );
                 }
             }
         ),
     );
 
+    @Effect()
+    porData = this.store.pipe(
+        select(getReferencia),
+        switchMap(referencia => {
+            const start = moment(referencia).startOf('month');
+            const end = moment(start).endOf('month').add(1, 'day');
+
+            return this.db.collection('pagamentos', ref =>
+                ref.where('data', '>=', start.toDate())).valueChanges().pipe(
+                map(pagamentos => ({type: PagamentoActions.POR_DATA, payload: pagamentos}))
+            );
+        })
+    );
+
+    @Effect()
+    porReferencia = this.store.pipe(
+        select(getReferencia),
+        switchMap(referencia => {
+            return this.db.collection('pagamentos',
+                ref => ref.where('referencia', '==', referencia)).valueChanges().pipe(
+                map(pagamentos => ({type: PagamentoActions.POR_REFERENCIA, payload: pagamentos}))
+            );
+        })
+    );
 }

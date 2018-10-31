@@ -1,6 +1,9 @@
+import {Timestamp} from '@firebase/firestore-types';
+
 export interface Pagamento {
-  id: string;
-  referencia: string;
-  data: string;
-  valor: number;
+    id: string;
+    referencia: string;
+    data: Timestamp;
+    aluno: string;
+    valor: number;
 }
