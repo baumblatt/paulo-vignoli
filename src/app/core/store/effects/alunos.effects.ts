@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {from, of} from 'rxjs';
-import {catchError, map, mergeMapTo, pluck, switchMap} from 'rxjs/operators';
+import {catchError, exhaustMap, map, mergeMapTo, pluck} from 'rxjs/operators';
 import {AlunosAction, UIActions} from '../../models/action.model';
 import {Aluno} from '../../models/aluno.model';
 
@@ -28,7 +28,7 @@ export class AlunosEffects {
     salvar = this.actions$.pipe(
         ofType(AlunosAction.SALVAR),
         pluck('payload'),
-        switchMap((aluno: Aluno) => {
+        exhaustMap((aluno: Aluno) => {
             const id = aluno.id || this.db.createId();
             return from(this.db.collection('alunos').doc(id).set({...aluno, id})).pipe(
                 mergeMapTo(from([{
