@@ -25,6 +25,12 @@ export enum PagamentoActions {
   ERROR = '[Pagamento] Error na store de pagamentos.',
 }
 
+export enum ReferenciaActions {
+    ANTERIOR = '[REferência] Navegar para o mês de referência anterior.',
+    PROXIMO = '[Referência] Navegar para o próximo mês de referência.',
+    REFERENCIA = '[Referência] Navegar para um mês de referência específico.'
+}
+
 export enum UIActions {
     SNACKBAR = '[UI] Apresentar snack bar.',
     NAVIGATE = '[UI] Navegar entre rotas.',
@@ -32,6 +38,6 @@ export enum UIActions {
 }
 
 export interface GenericAction extends Action {
-    type: AlunosAction | AvatarActions | PagamentoActions | UIActions | 'ROUTER_NAVIGATION';
+    type: AlunosAction | AvatarActions | PagamentoActions | ReferenciaActions | UIActions | 'ROUTER_NAVIGATION';
     payload?: any;
 }

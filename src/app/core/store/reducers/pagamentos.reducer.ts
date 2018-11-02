@@ -1,20 +1,17 @@
 import {GenericAction, PagamentoActions} from '../../models/action.model';
 import {Pagamento} from '../../models/pagamento.model';
-import * as moment from 'moment';
 
 export interface PagamentosState {
     aluno: Pagamento[];
     pagamentos: {
-        mes: string,
         porData: Pagamento[]
         porReferencia: Pagamento[]
-    },
+    };
 }
 
 export const initialState: PagamentosState = {
     aluno: [],
     pagamentos: {
-        mes: moment().format('YYYY-MM'),
         porData: [],
         porReferencia: [],
     },

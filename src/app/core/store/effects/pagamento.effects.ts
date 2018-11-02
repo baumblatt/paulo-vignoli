@@ -3,6 +3,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {MatDialog} from '@angular/material';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {select, Store} from '@ngrx/store';
+import * as moment from 'moment';
 import {of} from 'rxjs';
 import {exhaustMap, map, pluck, switchMap, withLatestFrom} from 'rxjs/operators';
 import {PagamentoComponent} from '../../components/pagamento/pagamento.component';
@@ -10,8 +11,7 @@ import {PagamentoActions, UIActions} from '../../models/action.model';
 import {Pagamento} from '../../models/pagamento.model';
 import {CoreState} from '../reducers/global.reducer';
 import {getSelecionado} from '../selectors/alunos.selectors';
-import {getReferencia} from '../selectors/pagamentos.selectors';
-import * as moment from 'moment';
+import {getReferencia} from '../selectors/referencia.selectors';
 
 @Injectable()
 export class PagamentoEffects {
@@ -71,7 +71,8 @@ export class PagamentoEffects {
             const end = moment(start).endOf('month').add(1, 'day');
 
             return this.db.collection('pagamentos', ref =>
-                ref.where('data', '>=', start.toDate())).valueChanges().pipe(
+                ref.where('data', '>=', start.toDate())
+                    .where('data', '<', end.toDate())).valueChanges().pipe(
                 map(pagamentos => ({type: PagamentoActions.POR_DATA, payload: pagamentos}))
             );
         })

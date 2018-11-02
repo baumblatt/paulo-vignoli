@@ -6,8 +6,9 @@ import * as moment from 'moment';
 import {Aluno} from '../../models/aluno.model';
 import {alunosAdapter} from '../reducers/alunos.reducer';
 import {getCoreState} from '../reducers/global.reducer';
+import {getReferencia} from './referencia.selectors';
 
-const fuseOptions: FuseOptions = {
+const fuseOptions: FuseOptions<Aluno> = {
     keys: ['nome', 'responsavel'],
     caseSensitive: false,
     tokenize: true,
@@ -44,13 +45,14 @@ export const getAlunosFiltro = createSelector(
 export const getAlunosFiltrados = createSelector(
     getAlunos,
     getAlunosFiltro,
-    (alunos, filtro) => !filtro ? alunos : new Fuse(alunos, fuseOptions).search<Aluno>(filtro)
+    (alunos, filtro) => !filtro ? alunos : new Fuse(alunos, fuseOptions).search(filtro)
 );
 
 export const getAniversariantes = createSelector(
     getAlunos,
-    alunos => alunos.filter(
-        aluno => !aluno.nascimento ? false : moment().month() === moment(aluno.nascimento).month()
+    getReferencia,
+    (alunos, referencia) => alunos.filter(
+        aluno => !aluno.nascimento ? false : moment(referencia).month() === moment(aluno.nascimento).month()
     ).sort((a, b) => moment(a.nascimento).date() > moment(b.nascimento).date() ? 1 : -1)
 );
 

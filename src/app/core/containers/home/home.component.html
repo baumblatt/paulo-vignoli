@@ -1,18 +1,20 @@
 <div class="container-component">
-  <h1 class="mat-h1">Diário de Bordo</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
+  <h1 class="mat-h1">Painel de Controle</h1>
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-icon matPrefix (click)="anterior()">arrow_back_ios</mat-icon>
+        <input matInput type="month" placeholder="Mês de Referência" [formControl]="referencia">
+        <mat-icon matSuffix (click)="proximo()">arrow_forward_ios</mat-icon>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+  <mat-grid-list [cols]="2" rowHeight="350px">
     <mat-grid-tile  [colspan]="(isHandset$ | async) ? 2 : 1">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
             Aniversariantes do Mês
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -25,17 +27,45 @@
         <mat-card-header>
           <mat-card-title>
             Alunos pendentes
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>Em breve</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile  [colspan]="(isHandset$ | async) ? 2 : 1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Dividendos
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div class="dividendos" *ngIf="dividendos$ | async as dividendos">
+            <ng-container *ngIf="dividendos.quantidade > 0; else semPagamentos">
+              <mat-list>
+                <mat-list-item>
+                  <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%">
+                    <h4>Alunos:</h4><h4>{{dividendos.quantidade}}</h4>
+                  </div>
+                </mat-list-item>
+                <mat-list-item>
+                  <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%">
+                    <h4>Arrecadação:</h4><h4>{{dividendos.total | currency : 'BRL' : 'symbol'}}</h4>
+                  </div>
+                </mat-list-item>
+                <mat-list-item>
+                  <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%">
+                    <h4>Dividendos:</h4><h4>{{dividendos.dividendos | currency : 'BRL' : 'symbol'}}</h4>
+                  </div>
+                </mat-list-item>
+              </mat-list>
+            </ng-container>
+            <ng-template #semPagamentos>
+              Não há pagamentos registros no mês de referência.
+            </ng-template>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
