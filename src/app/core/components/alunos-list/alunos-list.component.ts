@@ -11,6 +11,9 @@ export class AlunosListComponent implements OnInit {
     @Input()
     alunos: Aluno[];
 
+    @Input()
+    maxHeight: string;
+
     constructor() {
     }
 

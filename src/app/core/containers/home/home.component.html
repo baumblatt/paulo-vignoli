@@ -23,14 +23,14 @@
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile  [colspan]="(isHandset$ | async) ? 2 : 1">
-      <mat-card class="dashboard-card">
+      <mat-card class="dashboard-card pendentes">
         <mat-card-header>
           <mat-card-title>
             Alunos pendentes
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Em breve</div>
+        <mat-card-content>
+			<app-alunos-list [alunos]="pendentes$ | async" [maxHeight]="'250px'"></app-alunos-list>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

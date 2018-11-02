@@ -1,4 +1,4 @@
-<mat-list>
+<mat-list [style.maxHeight]="maxHeight">
   <mat-list-item *ngFor="let aluno of alunos" [routerLink]="['/core/aluno', aluno.id]">
     <img matListAvatar [src]="aluno.avatar || '/assets/images/no-photo.png'">
     <h3 matLine>{{aluno.nome}}</h3>

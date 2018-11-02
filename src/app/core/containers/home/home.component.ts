@@ -9,7 +9,7 @@ import {Aluno} from '../../models/aluno.model';
 import {Dividendo} from '../../models/dividendo.model';
 import {AlunosState} from '../../store/reducers/alunos.reducer';
 import {getAniversariantes} from '../../store/selectors/alunos.selectors';
-import {getDividendos} from '../../store/selectors/pagamentos.selectors';
+import {getDividendos, getPendentes} from '../../store/selectors/pagamentos.selectors';
 import {getReferencia} from '../../store/selectors/referencia.selectors';
 
 @Component({
@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     aniversariantes$: Observable<Aluno[]>;
     referencia$: Observable<string>;
     dividendos$: Observable<Dividendo>;
+    pendentes$: Observable<Aluno[]>;
 
     referencia = new FormControl('');
 
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.aniversariantes$ = this.store.pipe(select(getAniversariantes));
         this.referencia$ = this.store.pipe(select(getReferencia));
         this.dividendos$ = this.store.pipe(select(getDividendos));
+        this.pendentes$ = this.store.pipe(select(getPendentes));
 
         this.subscriptions.push(this.referencia$.pipe(
             distinctUntilChanged(),
