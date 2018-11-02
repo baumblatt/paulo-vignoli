@@ -26,12 +26,20 @@
       <mat-card class="dashboard-card pendentes">
         <mat-card-header>
           <mat-card-title>
-            Alunos pendentes
+            Pagamentos em Aberto
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content>
-			<app-alunos-list [alunos]="pendentes$ | async" [maxHeight]="'250px'"></app-alunos-list>
-        </mat-card-content>
+        <ng-container *ngIf="pendentes$ | async as pendentes">
+          <mat-card-content [ngClass]="{'dashboard-card-content' : !pendentes.length}">
+
+                <ng-container *ngIf="pendentes.length; else semPendentes">
+                  <app-alunos-list [alunos]="pendentes" [maxHeight]="'250px'"></app-alunos-list>
+                </ng-container>
+                <ng-template #semPendentes>
+                  Não há alunos com o pagamento em aberto no mês de referência.
+                </ng-template>
+          </mat-card-content>
+        </ng-container>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile  [colspan]="(isHandset$ | async) ? 2 : 1">
