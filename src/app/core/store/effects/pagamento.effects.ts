@@ -35,7 +35,9 @@ export class PagamentoEffects {
         withLatestFrom(this.store.pipe(select(getSelecionado))),
         exhaustMap(([pagamento, aluno]: [any, string]) => {
             const id = this.db.createId();
-            return this.db.doc(`pagamentos/${id}`).set({...pagamento, id, aluno, data: new Date(pagamento.data)});
+            return this.db.doc(`pagamentos/${id}`).set({
+                ...pagamento, id, aluno, data: moment(pagamento.data).toDate()
+            });
         }),
         map(() => ({
                 type: UIActions.SNACKBAR, payload: {

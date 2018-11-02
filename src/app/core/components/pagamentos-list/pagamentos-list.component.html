@@ -2,7 +2,7 @@
 	<mat-list-item *ngFor="let pagamento of pagamentos">
 		<mat-icon mat-list-icon>attach_money</mat-icon>
 		<h3 class="mat-h3" mat-line>{{pagamento.referencia | date : 'yyyy - MMMM' : 'UTC'}}</h3>
-		<h6 class="mat-h6" mat-line>{{pagamento.data.toDate() | date : 'dd/MM/yy' }}</h6>
+		<h6 class="mat-h6" mat-line>{{pagamento.data.toDate() | date : 'dd/MM/yy'}}</h6>
 		<p style="float: right">R$ {{pagamento.valor | number:'1.2-2':'pt_br'}}</p>
 	</mat-list-item>
 </mat-list>
