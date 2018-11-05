@@ -3,6 +3,7 @@ import {createSelector} from '@ngrx/store';
 import * as Fuse from 'fuse.js';
 import {FuseOptions} from 'fuse.js';
 import * as moment from 'moment';
+import {getRouterState} from '../../../store/reducers/global.reducer';
 import {Aluno} from '../../models/aluno.model';
 import {alunosAdapter} from '../reducers/alunos.reducer';
 import {getCoreState} from '../reducers/global.reducer';
@@ -28,13 +29,14 @@ export const getAlunos = createSelector(
 );
 
 export const getSelecionado = createSelector(
-    getAlunoState,
-    state => state.selecionado
+    getRouterState,
+    state => state && state.state.url.startsWith('/core/aluno/') ? state.state.params.id : ''
 );
 
 export const getAluno = createSelector(
     getAlunoState,
-    state => state.entities[state.selecionado]
+    getSelecionado,
+    (state, selecionado) => state.entities[selecionado]
 );
 
 export const getAlunosFiltro = createSelector(

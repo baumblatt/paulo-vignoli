@@ -41,7 +41,7 @@ export function avatarReducer(state = initialState, action: GenericAction): Avat
             return {
                 ...state,
                 inProgress: false,
-                url: action.payload
+                url: action.payload.url
             };
         }
 

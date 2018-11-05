@@ -8,7 +8,6 @@ export const alunosAdapter: EntityAdapter<Aluno> = createEntityAdapter<Aluno>({
 });
 
 export interface AlunosState extends EntityState<Aluno> {
-    selecionado: string;
     filtro: string;
 }
 
@@ -17,16 +16,6 @@ export const initialState: AlunosState = alunosAdapter.getInitialState({selecion
 export function alunosReducer(state = initialState, action: GenericAction): AlunosState {
 
     switch (action.type) {
-
-        case 'ROUTER_NAVIGATION': {
-            const {url, params} = action.payload.event.state;
-
-            return {
-                ...state,
-                selecionado: url.startsWith('/core/aluno/') ? params.id : ''
-            };
-        }
-
         case AlunosAction.FILTRAR: {
             return {
                 ...state,
@@ -39,11 +28,7 @@ export function alunosReducer(state = initialState, action: GenericAction): Alun
         }
 
         case AvatarActions.COMPLETE: {
-            if (state.selecionado) {
-                return alunosAdapter.updateOne({id: state.selecionado, changes: {avatar: action.payload}}, state);
-            }
-
-            return state;
+            return alunosAdapter.updateOne({id: action.payload.selecionado, changes: {avatar: action.payload}}, state);
         }
 
         default: {

@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {from, merge} from 'rxjs';
-import {last, map, pluck, switchMap} from 'rxjs/operators';
+import {last, map, pluck, switchMap, withLatestFrom} from 'rxjs/operators';
 import {AvatarActions} from '../../models/action.model';
 import {CoreState} from '../reducers/global.reducer';
+import {getSelecionado} from '../selectors/alunos.selectors';
 
 @Injectable()
 export class AvatarEffects {
@@ -17,7 +18,8 @@ export class AvatarEffects {
     upload = this.actions$.pipe(
         ofType(AvatarActions.UPLOAD),
         pluck('payload'),
-        switchMap((file: File) => {
+        withLatestFrom(this.store.pipe(select(getSelecionado))),
+        switchMap(([file, selecionado]: [File, string]) => {
             const task = this.storage.upload(`avatars/${file.name}`, file);
             return merge(
                 task.percentageChanges().pipe(
@@ -27,11 +29,12 @@ export class AvatarEffects {
                     }))),
                 task.snapshotChanges().pipe(
                     last(),
-                    switchMap(() => from(this.storage.ref(`avatars/${file.name}`).getDownloadURL()).pipe(
-                        map(url => ({
-                            type: AvatarActions.COMPLETE,
-                            payload: url,
-                        })),
+                    switchMap(() =>
+                        from(this.storage.ref(`avatars/${file.name}`).getDownloadURL()).pipe(
+                            map(url => ({
+                                type: AvatarActions.COMPLETE,
+                                payload: {url, selecionado},
+                            })),
                     )),
                 )
             );
