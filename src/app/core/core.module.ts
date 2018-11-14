@@ -48,7 +48,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     imports: [
         CommonModule,
         CoreRoutingModule,
-        EffectsModule.forFeature([AlunosEffects, AvatarEffects, PagamentoEffects, UIEffects]),
+        EffectsModule.forFeature([AlunosEffects, AvatarEffects, PagamentoEffects, TurmasEffects, UIEffects]),
         StoreModule.forFeature('core', globalReducer),
         FlexLayoutModule,
         LayoutModule,
@@ -78,9 +78,13 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         AlunosListComponent,
         AniversariantesComponent,
         PagamentoComponent,
-        PagamentosListComponent
+        PagamentosListComponent,
+        LoginComponent,
+        TurmasComponent,
+        TurmasGridComponent,
     ],
-    entryComponents: [PagamentoComponent]
+    entryComponents: [PagamentoComponent],
+    providers: [AuthGuard]
 })
 export class CoreModule {
 }
