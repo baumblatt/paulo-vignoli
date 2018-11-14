@@ -18,6 +18,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {globalReducer, metaReducers} from './store/reducers/global.reducer';
 import {CustomSerializer} from './store/reducers/router.reducer';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 
 registerLocaleData(localeBR, 'pt', localeBRExtra);
 
@@ -32,6 +33,7 @@ registerLocaleData(localeBR, 'pt', localeBRExtra);
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         AngularFirestoreModule,
+        AngularFireAuthModule,
         EffectsModule.forRoot([]),
         StoreModule.forRoot(globalReducer, {metaReducers}),
         StoreRouterConnectingModule,
