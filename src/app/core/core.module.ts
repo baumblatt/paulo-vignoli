@@ -37,6 +37,12 @@ import {AvatarEffects} from './store/effects/avatar.effects';
 import {PagamentoEffects} from './store/effects/pagamento.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
+import {LoginComponent} from './containers/login/login.component';
+import {TurmasComponent} from './containers/turmas/turmas.component';
+import {AuthGuard} from './guards/auth.guard';
+import {TurmasEffects} from './store/effects/turmas.effects';
+import {TurmasGridComponent} from './components/turmas-grid/turmas-grid.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
     imports: [
@@ -61,7 +67,8 @@ import {globalReducer} from './store/reducers/global.reducer';
         MatSidenavModule,
         MatTabsModule,
         MatToolbarModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ScrollingModule,
     ],
     declarations: [
         LayoutComponent,

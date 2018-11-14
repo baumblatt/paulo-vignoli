@@ -1,7 +1,9 @@
-<mat-list [style.maxHeight]="maxHeight">
-  <mat-list-item *ngFor="let aluno of alunos" [routerLink]="['/core/aluno', aluno.id]">
-    <img matListAvatar [src]="aluno.avatar || '/assets/images/no-photo.png'">
-    <h3 matLine>{{aluno.nome}}</h3>
-    <h4 matLine *ngIf="aluno.responsavel">Responsável: {{aluno.responsavel}}</h4>
-  </mat-list-item>
+<mat-list [style.minHeight]="maxHeight" [style.maxHeight]="maxHeight">
+	<cdk-virtual-scroll-viewport itemSize="72" [style.minHeight]="maxHeight" [style.maxHeight]="maxHeight">
+		<mat-list-item *cdkVirtualFor="let aluno of alunos" [routerLink]="['/core/aluno', aluno.id]">
+			<img matListAvatar [src]="aluno.avatar || '/assets/images/no-photo.png'">
+			<h3 matLine>{{aluno.nome}}</h3>
+			<h4 matLine>{{aluno.responsavel ? 'Responsável: ' + aluno.responsavel : ''}}</h4>
+		</mat-list-item>
+	</cdk-virtual-scroll-viewport>
 </mat-list>
