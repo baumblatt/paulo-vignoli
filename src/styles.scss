@@ -22,6 +22,7 @@ body.app-theme {
   @include angular-material-theme($app-theme);
 
   div.container-component {
+    box-sizing: border-box;
     height: calc(100vh - 64px);
 
     @media (max-width: 599px) {
