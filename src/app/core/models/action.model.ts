@@ -26,9 +26,17 @@ export enum PagamentoActions {
 }
 
 export enum ReferenciaActions {
-    ANTERIOR = '[REferência] Navegar para o mês de referência anterior.',
+    ANTERIOR = '[Referência] Navegar para o mês de referência anterior.',
     PROXIMO = '[Referência] Navegar para o próximo mês de referência.',
     REFERENCIA = '[Referência] Navegar para um mês de referência específico.'
+}
+
+export enum TurmasAction {
+    NOVA = '[Turma] Nova turma.',
+    LISTAR = '[Turma] Listar turmas.',
+    ADICIONAR = '[Turma] Adicionar aluno à turma.',
+    REMOVER = '[Turma] remover aluno da turma.',
+    ERROR = '[Turma] Error na store de turmas.',
 }
 
 export enum UIActions {
@@ -38,6 +46,6 @@ export enum UIActions {
 }
 
 export interface GenericAction extends Action {
-    type: AlunosAction | AvatarActions | PagamentoActions | ReferenciaActions | UIActions | 'ROUTER_NAVIGATION';
+    type: AlunosAction | AvatarActions | PagamentoActions | ReferenciaActions | TurmasAction | UIActions | 'ROUTER_NAVIGATION';
     payload?: any;
 }

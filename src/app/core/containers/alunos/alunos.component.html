@@ -11,7 +11,7 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <app-alunos-list [alunos]="alunos$ | async"></app-alunos-list>
+      <app-alunos-list [alunos]="alunos$ | async" [maxHeight]="'calc(100vh - 190px)'"></app-alunos-list>
     </mat-card-content>
   </mat-card>
   <button mat-mini-fab routerLink="/core/novo-aluno"><mat-icon>add</mat-icon></button>

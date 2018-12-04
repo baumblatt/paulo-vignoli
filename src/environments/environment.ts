@@ -4,6 +4,7 @@
 
 export const environment = {
     production: false,
+    login: 'http://localhost:4200/core/login',
     firebase: {
         apiKey: 'AIzaSyDZynm_kddGYcufKp-NE9P8W-UkMHwioGM',
         authDomain: 'paulo-vignoli.firebaseapp.com',

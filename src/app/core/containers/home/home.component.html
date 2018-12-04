@@ -31,7 +31,6 @@
         </mat-card-header>
         <ng-container *ngIf="pendentes$ | async as pendentes">
           <mat-card-content [ngClass]="{'dashboard-card-content' : !pendentes.length}">
-
                 <ng-container *ngIf="pendentes.length; else semPendentes">
                   <app-alunos-list [alunos]="pendentes" [maxHeight]="'250px'"></app-alunos-list>
                 </ng-container>

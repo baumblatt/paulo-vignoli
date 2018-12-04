@@ -37,12 +37,18 @@ import {AvatarEffects} from './store/effects/avatar.effects';
 import {PagamentoEffects} from './store/effects/pagamento.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
+import {LoginComponent} from './containers/login/login.component';
+import {TurmasComponent} from './containers/turmas/turmas.component';
+import {AuthGuard} from './guards/auth.guard';
+import {TurmasEffects} from './store/effects/turmas.effects';
+import {TurmasGridComponent} from './components/turmas-grid/turmas-grid.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
     imports: [
         CommonModule,
         CoreRoutingModule,
-        EffectsModule.forFeature([AlunosEffects, AvatarEffects, PagamentoEffects, UIEffects]),
+        EffectsModule.forFeature([AlunosEffects, AvatarEffects, PagamentoEffects, TurmasEffects, UIEffects]),
         StoreModule.forFeature('core', globalReducer),
         FlexLayoutModule,
         LayoutModule,
@@ -61,7 +67,8 @@ import {globalReducer} from './store/reducers/global.reducer';
         MatSidenavModule,
         MatTabsModule,
         MatToolbarModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ScrollingModule,
     ],
     declarations: [
         LayoutComponent,
@@ -71,9 +78,13 @@ import {globalReducer} from './store/reducers/global.reducer';
         AlunosListComponent,
         AniversariantesComponent,
         PagamentoComponent,
-        PagamentosListComponent
+        PagamentosListComponent,
+        LoginComponent,
+        TurmasComponent,
+        TurmasGridComponent,
     ],
-    entryComponents: [PagamentoComponent]
+    entryComponents: [PagamentoComponent],
+    providers: [AuthGuard]
 })
 export class CoreModule {
 }
