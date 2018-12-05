@@ -28,7 +28,7 @@
 				<div class="col">
 					<mat-form-field>
 						<input matInput type="number" placeholder="valor" formControlName="valor">
-						<mat-error *ngIf="pagamentoForm.controls['referencia'].hasError('required')">
+						<mat-error *ngIf="pagamentoForm.controls['valor'].hasError('required')">
 							O valor do pagamento é <strong>obrigatório</strong>
 						</mat-error>
 					</mat-form-field>

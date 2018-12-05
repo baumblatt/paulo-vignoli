@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import {CoreState} from '../../store/reducers/global.reducer';
 import {Observable} from 'rxjs';
+import {TurmasAction} from '../../models/action.model';
 import {Turma} from '../../models/turma.model';
+import {CoreState} from '../../store/reducers/global.reducer';
 import {getTurmasQuarta, getTurmasQuinta, getTurmasSegunda, getTurmasSexta, getTurmasTerca} from '../../store/selectors/turmas.selectors';
 
 @Component({
@@ -29,4 +30,7 @@ export class TurmasComponent implements OnInit {
         this.sexta = this.store.pipe(select(getTurmasSexta));
     }
 
+    nova() {
+        this.store.dispatch({type: TurmasAction.NOVA});
+    }
 }

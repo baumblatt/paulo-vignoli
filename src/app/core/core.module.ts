@@ -1,4 +1,5 @@
 import {LayoutModule} from '@angular/cdk/layout';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -27,22 +28,22 @@ import {AniversariantesComponent} from './components/aniversariantes/aniversaria
 import {LayoutComponent} from './components/layout/layout.component';
 import {PagamentoComponent} from './components/pagamento/pagamento.component';
 import {PagamentosListComponent} from './components/pagamentos-list/pagamentos-list.component';
+import {TurmaComponent} from './components/turma/turma.component';
+import {TurmasGridComponent} from './components/turmas-grid/turmas-grid.component';
 import {AlunoComponent} from './containers/aluno/aluno.component';
 import {AlunosComponent} from './containers/alunos/alunos.component';
 import {HomeComponent} from './containers/home/home.component';
+import {LoginComponent} from './containers/login/login.component';
+import {TurmasComponent} from './containers/turmas/turmas.component';
 
 import {CoreRoutingModule} from './core-routing.module';
+import {AuthGuard} from './guards/auth.guard';
 import {AlunosEffects} from './store/effects/alunos.effects';
 import {AvatarEffects} from './store/effects/avatar.effects';
 import {PagamentoEffects} from './store/effects/pagamento.effects';
+import {TurmasEffects} from './store/effects/turmas.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
-import {LoginComponent} from './containers/login/login.component';
-import {TurmasComponent} from './containers/turmas/turmas.component';
-import {AuthGuard} from './guards/auth.guard';
-import {TurmasEffects} from './store/effects/turmas.effects';
-import {TurmasGridComponent} from './components/turmas-grid/turmas-grid.component';
-import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
     imports: [
@@ -82,8 +83,9 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         LoginComponent,
         TurmasComponent,
         TurmasGridComponent,
+        TurmaComponent,
     ],
-    entryComponents: [PagamentoComponent],
+    entryComponents: [PagamentoComponent, TurmaComponent],
     providers: [AuthGuard]
 })
 export class CoreModule {

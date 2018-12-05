@@ -1,10 +1,10 @@
-import {GenericAction, TurmasAction} from '../../models/action.model';
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
-import {Turma} from '../../models/turma.model';
 import * as moment from 'moment';
+import {GenericAction, TurmasAction} from '../../models/action.model';
+import {Turma} from '../../models/turma.model';
 
 export const turmasAdapter: EntityAdapter<Turma> = createEntityAdapter({
-    sortComparer: (a, b) => moment(a.horario).isAfter(moment(b.horario)) ? -1 : 1,
+    sortComparer: (a, b) => moment(a.horario, 'hh:MM').isAfter(moment(b.horario, 'hh:MM')) ? -1 : 1,
     selectId: turma => turma.id,
 });
 

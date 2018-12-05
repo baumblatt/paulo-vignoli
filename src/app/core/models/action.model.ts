@@ -33,6 +33,7 @@ export enum ReferenciaActions {
 
 export enum TurmasAction {
     NOVA = '[Turma] Nova turma.',
+    INSERIR = '[Turma] Inserir nova turma',
     LISTAR = '[Turma] Listar turmas.',
     ADICIONAR = '[Turma] Adicionar aluno à turma.',
     REMOVER = '[Turma] remover aluno da turma.',
