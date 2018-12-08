@@ -1,0 +1,31 @@
+img.avatar {
+	flex-shrink: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+mat-grid-tile-footer.mat-grid-tile-footer {
+	font-size: 9px;
+	padding: 0 3px;
+	bottom: 2px;
+
+	text-align: center;
+
+	height: 24px;
+	line-height: 10px;
+}
+
+mat-grid-tile-header.mat-grid-tile-header {
+	background-color: transparent;
+	text-align: right;
+
+	button {
+		position: absolute;
+		right: 2px;
+		top: 0;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+	}
+}

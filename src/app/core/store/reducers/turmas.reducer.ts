@@ -26,6 +26,12 @@ export function turmasReducer(state = initialState, action: GenericAction): Turm
             return turmasAdapter.updateOne({id: <string>turma, changes: {alunos}}, state);
         }
 
+        case TurmasAction.REMOVER: {
+            const {turma, aluno} = action.payload;
+            const alunos = state.entities[action.payload.turma].alunos.filter(a => a !== aluno);
+            return turmasAdapter.updateOne({id: <string>turma, changes: {alunos}}, state);
+        }
+
         default: {
             return state;
         }

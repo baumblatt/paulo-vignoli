@@ -29,9 +29,9 @@ import {AniversariantesComponent} from './components/aniversariantes/aniversaria
 import {LayoutComponent} from './components/layout/layout.component';
 import {PagamentoComponent} from './components/pagamento/pagamento.component';
 import {PagamentosListComponent} from './components/pagamentos-list/pagamentos-list.component';
+import {TurmaCardComponent} from './components/turma-card/turma-card.component';
 import {TurmaComponent} from './components/turma/turma.component';
 import {TurmasCardsComponent} from './components/turmas-cards/turmas-cards.component';
-import {TurmasGridComponent} from './components/turmas-grid/turmas-grid.component';
 import {AlunoComponent} from './containers/aluno/aluno.component';
 import {AlunosComponent} from './containers/alunos/alunos.component';
 import {HomeComponent} from './containers/home/home.component';
@@ -46,7 +46,7 @@ import {PagamentoEffects} from './store/effects/pagamento.effects';
 import {TurmasEffects} from './store/effects/turmas.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
-import { TurmaCardComponent } from './components/turma-card/turma-card.component';
+import { AlunoThumbnailComponent } from './containers/aluno-thumbnail/aluno-thumbnail.component';
 
 @NgModule({
     imports: [
@@ -86,10 +86,10 @@ import { TurmaCardComponent } from './components/turma-card/turma-card.component
         PagamentosListComponent,
         LoginComponent,
         TurmasComponent,
-        TurmasGridComponent,
         TurmaComponent,
         TurmasCardsComponent,
         TurmaCardComponent,
+        AlunoThumbnailComponent,
     ],
     entryComponents: [PagamentoComponent, TurmaComponent],
     providers: [AuthGuard]

@@ -1,0 +1,9 @@
+<ng-container *ngIf="aluno$ | async; let aluno">
+	<mat-grid-tile-header>
+		<button mat-icon-button (click)="remover(aluno)"><mat-icon>close</mat-icon></button>
+	</mat-grid-tile-header>
+	<img class="avatar" [src]="aluno.avatar || '/assets/images/no-photo.png'" alt="">
+	<mat-grid-tile-footer>
+		{{aluno.nome}}
+	</mat-grid-tile-footer>
+</ng-container>

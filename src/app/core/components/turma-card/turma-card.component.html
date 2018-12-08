@@ -3,7 +3,11 @@
     <mat-card-title>{{turma.horario}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    Alunos em breve ({{turma.alunos.length}}).
+    <mat-grid-list cols="4" rowHeight="1:1" [gutterSize]="7">
+      <mat-grid-tile *ngFor="let aluno of turma.alunos">
+        <app-aluno-thumbnail [id]="aluno" [turma]="turma"></app-aluno-thumbnail>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-card-content>
   <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
     <mat-form-field>

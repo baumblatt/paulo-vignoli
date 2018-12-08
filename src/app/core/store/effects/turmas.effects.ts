@@ -67,7 +67,27 @@ export class TurmasEffects {
             switchMap(turma => from(this.db.doc(`turmas/${turma.id}`).set(turma, {merge: true})).pipe(
                 map(() => ({
                         type: UIActions.SNACKBAR, payload: {
-                            message: 'Aluno incluído com sucesso', config: {
+                            message: 'Aluno adicionado com sucesso', config: {
+                                duration: 4000, panelClass: ['mat-snack-bar-success']
+                            }
+                        }
+                    }
+                )),
+            ))
+        ))
+    );
+
+    @Effect()
+    remover = this.actions$.pipe(
+        ofType(TurmasAction.REMOVER),
+        pluck('payload', 'turma'),
+        switchMap(id => of(id).pipe(
+            withLatestFrom(this.store.pipe(select(getTurma(id)))),
+            map(([action, turma]) => turma),
+            switchMap(turma => from(this.db.doc(`turmas/${turma.id}`).set(turma, {merge: true})).pipe(
+                map(() => ({
+                        type: UIActions.SNACKBAR, payload: {
+                            message: 'Aluno removido com sucesso', config: {
                                 duration: 4000, panelClass: ['mat-snack-bar-success']
                             }
                         }
