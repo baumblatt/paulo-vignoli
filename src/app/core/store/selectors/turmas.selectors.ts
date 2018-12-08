@@ -1,7 +1,7 @@
 import {createSelector} from '@ngrx/store';
+import {DiaSemana} from '../../models/turma.model';
 import {getCoreState} from '../reducers/global.reducer';
 import {turmasAdapter} from '../reducers/turmas.reducer';
-import {DiaSemana} from '../../models/turma.model';
 
 export const getTurmasState = createSelector(
     getCoreState,
@@ -11,6 +11,11 @@ export const getTurmasState = createSelector(
 export const getTurmas = createSelector(
     getTurmasState,
     state => turmasAdapter.getSelectors().selectAll(state)
+);
+
+export const getTurma = (id) => createSelector(
+    getTurmasState,
+    state => state.entities[id]
 );
 
 export const getTurmasSegunda = createSelector(

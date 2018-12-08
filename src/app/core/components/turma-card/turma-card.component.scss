@@ -1,0 +1,22 @@
+mat-card:not(last-child) {
+	margin-bottom: 7px;
+
+	mat-card-header {
+		div.mat-card-header-text {
+			margin: 0;
+		}
+	}
+}
+
+
+mat-option {
+	img.avatar {
+		flex-shrink: 0;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		object-fit: cover;
+		margin-right: 7px;
+	}
+
+}

@@ -5,6 +5,7 @@ import {NgModule} from '@angular/core';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
 import {
+    MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
@@ -29,6 +30,7 @@ import {LayoutComponent} from './components/layout/layout.component';
 import {PagamentoComponent} from './components/pagamento/pagamento.component';
 import {PagamentosListComponent} from './components/pagamentos-list/pagamentos-list.component';
 import {TurmaComponent} from './components/turma/turma.component';
+import {TurmasCardsComponent} from './components/turmas-cards/turmas-cards.component';
 import {TurmasGridComponent} from './components/turmas-grid/turmas-grid.component';
 import {AlunoComponent} from './containers/aluno/aluno.component';
 import {AlunosComponent} from './containers/alunos/alunos.component';
@@ -44,6 +46,7 @@ import {PagamentoEffects} from './store/effects/pagamento.effects';
 import {TurmasEffects} from './store/effects/turmas.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
+import { TurmaCardComponent } from './components/turma-card/turma-card.component';
 
 @NgModule({
     imports: [
@@ -53,6 +56,7 @@ import {globalReducer} from './store/reducers/global.reducer';
         StoreModule.forFeature('core', globalReducer),
         FlexLayoutModule,
         LayoutModule,
+        MatAutocompleteModule,
         MatButtonModule,
         MatCardModule,
         MatDialogModule,
@@ -84,6 +88,8 @@ import {globalReducer} from './store/reducers/global.reducer';
         TurmasComponent,
         TurmasGridComponent,
         TurmaComponent,
+        TurmasCardsComponent,
+        TurmaCardComponent,
     ],
     entryComponents: [PagamentoComponent, TurmaComponent],
     providers: [AuthGuard]

@@ -2,23 +2,23 @@
   <mat-tab-group mat-stretch-tabs>
     <mat-tab label="2&ordf;">
       <h1 class="mat-h1">Segunda-feira</h1>
-      <app-turmas-grid [turmas]="segunda | async"></app-turmas-grid>
+      <app-turmas-cards [turmas]="segunda | async" [alunos]="alunos | async" (actionEmitter)="dispatch($event)"></app-turmas-cards>
     </mat-tab>
     <mat-tab label="3&ordf;">
       <h1 class="mat-h1">Terça-feira</h1>
-      <app-turmas-grid [turmas]="segunda | async"></app-turmas-grid>
+      <app-turmas-cards [turmas]="terca | async" [alunos]="alunos | async" (actionEmitter)="dispatch($event)"></app-turmas-cards>
     </mat-tab>
     <mat-tab label="4&ordf;">
       <h1 class="mat-h1">Quarta-feira</h1>
-      <app-turmas-grid [turmas]="segunda | async"></app-turmas-grid>
+      <app-turmas-cards [turmas]="quarta | async" [alunos]="alunos | async" (actionEmitter)="dispatch($event)"></app-turmas-cards>
     </mat-tab>
     <mat-tab label="5&ordf;">
       <h1 class="mat-h1">Quinta-feira</h1>
-      <app-turmas-grid [turmas]="segunda | async"></app-turmas-grid>
+      <app-turmas-cards [turmas]="quinta | async" [alunos]="alunos | async" (actionEmitter)="dispatch($event)"></app-turmas-cards>
     </mat-tab>
     <mat-tab label="6&ordf;">
       <h1 class="mat-h1">Sexta-feira</h1>
-      <app-turmas-grid [turmas]="segunda | async"></app-turmas-grid>
+      <app-turmas-cards [turmas]="sexta | async" [alunos]="alunos | async" (actionEmitter)="dispatch($event)"></app-turmas-cards>
     </mat-tab>
   </mat-tab-group>
   <button mat-mini-fab (click)="nova()"><mat-icon>add</mat-icon></button>

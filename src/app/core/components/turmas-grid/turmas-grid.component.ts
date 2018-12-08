@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Aluno} from '../../models/aluno.model';
 import {Turma} from '../../models/turma.model';
 
 @Component({
@@ -9,7 +10,10 @@ import {Turma} from '../../models/turma.model';
 export class TurmasGridComponent implements OnInit {
 
     @Input()
-    turmas: Turma[];
+    turma: Turma;
+
+    @Input()
+    alunos: Aluno[];
 
     constructor() {
     }

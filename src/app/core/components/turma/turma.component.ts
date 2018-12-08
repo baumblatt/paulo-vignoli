@@ -14,6 +14,7 @@ export class TurmaComponent implements OnInit {
         id: null,
         dia: [null, Validators.required],
         horario: [null, Validators.required],
+        alunos: [[]],
     });
 
     constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<TurmaComponent>) {

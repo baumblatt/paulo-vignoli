@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{turma.horario}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    Alunos em breve ({{turma.alunos.length}}).
+  </mat-card-content>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field>
+      <input matInput placeholder="Digite o nome do aluno..." aria-label="State" [matAutocomplete]="auto" [formControl]="alunoCtrl">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let aluno of alunos" [value]="aluno" (onSelectionChange)="selecionar($event)">
+          <img class="avatar" [src]="aluno.avatar || '/assets/images/no-photo.png'">
+          <span class="nome">{{aluno.nome}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button mat-icon-button type="button" (click)="adicionar()"><mat-icon>add</mat-icon></button>
+  </mat-card-actions>
+</mat-card>

@@ -4,7 +4,7 @@ import {GenericAction, TurmasAction} from '../../models/action.model';
 import {Turma} from '../../models/turma.model';
 
 export const turmasAdapter: EntityAdapter<Turma> = createEntityAdapter({
-    sortComparer: (a, b) => moment(a.horario, 'hh:MM').isAfter(moment(b.horario, 'hh:MM')) ? -1 : 1,
+    sortComparer: (a, b) => moment(a.horario, 'hh:MM').isBefore(moment(b.horario, 'hh:MM')) ? -1 : 1,
     selectId: turma => turma.id,
 });
 
@@ -19,6 +19,12 @@ export function turmasReducer(state = initialState, action: GenericAction): Turm
     switch (action.type) {
         case TurmasAction.LISTAR:
             return turmasAdapter.addAll(action.payload, state);
+
+        case TurmasAction.ADICIONAR: {
+            const {turma, aluno} = action.payload;
+            const alunos = [...state.entities[action.payload.turma].alunos, aluno];
+            return turmasAdapter.updateOne({id: <string>turma, changes: {alunos}}, state);
+        }
 
         default: {
             return state;

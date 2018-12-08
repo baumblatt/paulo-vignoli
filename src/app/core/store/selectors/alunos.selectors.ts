@@ -28,6 +28,11 @@ export const getAlunos = createSelector(
     state => alunosAdapter.getSelectors().selectAll(state)
 );
 
+export const getAlunoById = (id) => createSelector(
+    getAlunoState,
+    state => state.entities[id]
+);
+
 export const getSelecionado = createSelector(
     getRouterState,
     state => state && state.state.url.startsWith('/core/aluno/') ? state.state.params.id : ''
