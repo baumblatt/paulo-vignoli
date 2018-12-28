@@ -5,6 +5,12 @@ mat-card:not(last-child) {
 		div.mat-card-header-text {
 			margin: 0;
 		}
+
+		button {
+			position: absolute;
+			right: 0;
+			top: 5px;
+		}
 	}
 }
 

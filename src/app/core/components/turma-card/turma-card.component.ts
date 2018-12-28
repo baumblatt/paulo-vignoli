@@ -63,4 +63,9 @@ export class TurmaCardComponent implements OnInit, OnDestroy {
         this.selecionado = $event.source.value;
     }
 
+    excluir(turma: string) {
+        this.actionEmitter.emit({
+            type: TurmasAction.EXCLUIR, payload: {turma}
+        });
+    }
 }

@@ -4,7 +4,7 @@ import {GenericAction, TurmasAction} from '../../models/action.model';
 import {Turma} from '../../models/turma.model';
 
 export const turmasAdapter: EntityAdapter<Turma> = createEntityAdapter({
-    sortComparer: (a, b) => moment(a.horario, 'hh:MM').isBefore(moment(b.horario, 'hh:MM')) ? -1 : 1,
+    sortComparer: (a, b) => moment('01/01 ' + a.horario, 'dd/MM HH:mm').isBefore(moment('01/01 ' + b.horario, 'dd/MM HH:mm')) ? -1 : 1,
     selectId: turma => turma.id,
 });
 

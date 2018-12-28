@@ -36,7 +36,8 @@ export enum TurmasAction {
     INSERIR = '[Turma] Inserir nova turma',
     LISTAR = '[Turma] Listar turmas.',
     ADICIONAR = '[Turma] Adicionar aluno à turma.',
-    REMOVER = '[Turma] remover aluno da turma.',
+    REMOVER = '[Turma] Remover aluno da turma.',
+    EXCLUIR = '[Turma] Excluir turma',
     ERROR = '[Turma] Error na store de turmas.',
 }
 

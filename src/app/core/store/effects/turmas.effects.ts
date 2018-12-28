@@ -96,4 +96,20 @@ export class TurmasEffects {
             ))
         ))
     );
+
+    @Effect()
+    excluir = this.actions$.pipe(
+        ofType(TurmasAction.EXCLUIR),
+        pluck('payload', 'turma'),
+        switchMap(turma => from(this.db.doc(`turmas/${turma}`).delete()).pipe(
+            map(() => ({
+                    type: UIActions.SNACKBAR, payload: {
+                        message: 'Turma excluída com sucesso', config: {
+                            duration: 4000, panelClass: ['mat-snack-bar-success']
+                        }
+                    }
+                }
+            )),
+        ))
+    );
 }
