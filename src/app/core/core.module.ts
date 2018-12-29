@@ -47,6 +47,9 @@ import {TurmasEffects} from './store/effects/turmas.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
 import { AlunoThumbnailComponent } from './containers/aluno-thumbnail/aluno-thumbnail.component';
+import { FrequenciaComponent } from './containers/frequencia/frequencia.component';
+import { FrequenciaTurmasCardsComponent } from './components/frequencia-turmas-cards/frequencia-turmas-cards.component';
+import { FrequenciaTurmaCardComponent } from './components/frequencia-turma-card/frequencia-turma-card.component';
 
 @NgModule({
     imports: [
@@ -90,6 +93,9 @@ import { AlunoThumbnailComponent } from './containers/aluno-thumbnail/aluno-thum
         TurmasCardsComponent,
         TurmaCardComponent,
         AlunoThumbnailComponent,
+        FrequenciaComponent,
+        FrequenciaTurmasCardsComponent,
+        FrequenciaTurmaCardComponent,
     ],
     entryComponents: [PagamentoComponent, TurmaComponent],
     providers: [AuthGuard]

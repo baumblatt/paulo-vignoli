@@ -15,6 +15,10 @@ export enum AvatarActions {
     ERROR = '[Avatar] Error ao realizar upload de arquivo.',
 }
 
+export enum FrequenciaActions {
+    LISTAR = '[Frequencia] Listar frequencia.',
+}
+
 export enum PagamentoActions {
   NOVO = '[Pagamento] Novo pagamento.',
   INSERIR = '[Pagamento] Inserir novo pagamento.',
@@ -25,10 +29,16 @@ export enum PagamentoActions {
   ERROR = '[Pagamento] Error na store de pagamentos.',
 }
 
-export enum ReferenciaActions {
-    ANTERIOR = '[Referência] Navegar para o mês de referência anterior.',
-    PROXIMO = '[Referência] Navegar para o próximo mês de referência.',
-    REFERENCIA = '[Referência] Navegar para um mês de referência específico.'
+export enum ReferenciaMensalActions {
+    ANTERIOR = '[Referência Mensal] Navegar para o mês de referência anterior.',
+    PROXIMO = '[Referência Mensal] Navegar para o próximo mês de referência.',
+    REFERENCIA = '[Referência Mensal] Navegar para um mês de referência específico.'
+}
+
+export enum ReferenciaDiariaActions {
+    ANTERIOR = '[Referência Diaria] Navegar para o dia de referência anterior.',
+    PROXIMO = '[Referência Diaria] Navegar para o próximo dia de referência.',
+    REFERENCIA = '[Referência Diaria] Navegar para um dia de referência específico.'
 }
 
 export enum TurmasAction {
@@ -48,6 +58,6 @@ export enum UIActions {
 }
 
 export interface GenericAction extends Action {
-    type: AlunosAction | AvatarActions | PagamentoActions | ReferenciaActions | TurmasAction | UIActions | 'ROUTER_NAVIGATION';
+    type: AlunosAction | AvatarActions | PagamentoActions | ReferenciaDiariaActions | ReferenciaMensalActions | TurmasAction | UIActions | 'ROUTER_NAVIGATION';
     payload?: any;
 }

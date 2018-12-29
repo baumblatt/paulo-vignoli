@@ -1,21 +1,22 @@
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {select, Store} from '@ngrx/store';
 import {Observable, Subscription} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
-import {ReferenciaActions} from '../../models/action.model';
+import {ReferenciaMensalActions} from '../../models/action.model';
 import {Aluno} from '../../models/aluno.model';
 import {Dividendo} from '../../models/dividendo.model';
 import {AlunosState} from '../../store/reducers/alunos.reducer';
 import {getAniversariantes} from '../../store/selectors/alunos.selectors';
 import {getDividendos, getPendentes} from '../../store/selectors/pagamentos.selectors';
-import {getReferencia} from '../../store/selectors/referencia.selectors';
+import {getReferenciaMensal} from '../../store/selectors/referencia.selectors';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+    styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.aniversariantes$ = this.store.pipe(select(getAniversariantes));
-        this.referencia$ = this.store.pipe(select(getReferencia));
+        this.referencia$ = this.store.pipe(select(getReferenciaMensal));
         this.dividendos$ = this.store.pipe(select(getDividendos));
         this.pendentes$ = this.store.pipe(select(getPendentes));
 
@@ -49,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.subscriptions.push(this.referencia.valueChanges.pipe(
             distinctUntilChanged(),
         ).subscribe(referencia => this.store.dispatch({
-            type: ReferenciaActions.REFERENCIA,
+            type: ReferenciaMensalActions.REFERENCIA,
             payload: referencia
         })));
     }
@@ -60,10 +61,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
     anterior() {
-        this.store.dispatch({type: ReferenciaActions.ANTERIOR});
+        this.store.dispatch({type: ReferenciaMensalActions.ANTERIOR});
     }
 
     proximo() {
-        this.store.dispatch({type: ReferenciaActions.PROXIMO});
+        this.store.dispatch({type: ReferenciaMensalActions.PROXIMO});
     }
 }

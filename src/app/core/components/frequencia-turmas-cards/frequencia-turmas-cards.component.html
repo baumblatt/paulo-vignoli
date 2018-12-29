@@ -1,0 +1,3 @@
+<div class="turmas">
+  <app-frequencia-turma-card *ngFor="let turma of turmas" [turma]="turma" (actionEmitter)="emit($event)"></app-frequencia-turma-card>
+</div>

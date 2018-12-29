@@ -11,7 +11,7 @@ import {PagamentoActions, UIActions} from '../../models/action.model';
 import {Pagamento} from '../../models/pagamento.model';
 import {CoreState} from '../reducers/global.reducer';
 import {getSelecionado} from '../selectors/alunos.selectors';
-import {getReferencia} from '../selectors/referencia.selectors';
+import {getReferenciaMensal} from '../selectors/referencia.selectors';
 
 @Injectable()
 export class PagamentoEffects {
@@ -67,7 +67,7 @@ export class PagamentoEffects {
 
     @Effect()
     porData = this.store.pipe(
-        select(getReferencia),
+        select(getReferenciaMensal),
         switchMap(referencia => {
             const start = moment(referencia).startOf('month');
             const end = moment(start).endOf('month').add(1, 'day');
@@ -82,7 +82,7 @@ export class PagamentoEffects {
 
     @Effect()
     porReferencia = this.store.pipe(
-        select(getReferencia),
+        select(getReferenciaMensal),
         switchMap(referencia => {
             return this.db.collection('pagamentos',
                 ref => ref.where('referencia', '==', referencia)).valueChanges().pipe(

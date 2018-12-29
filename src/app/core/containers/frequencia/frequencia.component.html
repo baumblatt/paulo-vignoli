@@ -1,0 +1,14 @@
+<div class="container-component">
+	<h1 class="mat-h1">Frequência</h1>
+	<mat-card>
+		<mat-card-content>
+			<mat-form-field>
+				<mat-icon matPrefix (click)="anterior()">arrow_back_ios</mat-icon>
+				<input matInput type="date" placeholder="Dia de Referência" [formControl]="referencia">
+				<mat-icon matSuffix (click)="proximo()">arrow_forward_ios</mat-icon>
+			</mat-form-field>
+		</mat-card-content>
+	</mat-card>
+
+	<app-frequencia-turmas-cards [turmas]="turmas$ | async" (actionEmitter)="dispatch($event)"></app-frequencia-turmas-cards>
+</div>

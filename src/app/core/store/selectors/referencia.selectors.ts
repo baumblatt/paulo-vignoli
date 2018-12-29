@@ -1,4 +1,5 @@
 import {createSelector} from '@ngrx/store';
+import * as moment from 'moment';
 import {getCoreState} from '../reducers/global.reducer';
 
 export const getReferenciaState = createSelector(
@@ -6,7 +7,12 @@ export const getReferenciaState = createSelector(
     state => state.referencia
 );
 
-export const getReferencia = createSelector(
+export const getReferenciaMensal = createSelector(
     getReferenciaState,
-    state => state.mes
+    state => moment(state.dia).startOf('day').format('YYYY-MM')
+);
+
+export const getReferenciaDiaria = createSelector(
+    getReferenciaState,
+    state => state.dia
 );

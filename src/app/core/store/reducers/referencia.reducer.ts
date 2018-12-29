@@ -1,40 +1,67 @@
 import * as moment from 'moment';
-import {GenericAction, ReferenciaActions} from '../../models/action.model';
+import {GenericAction, ReferenciaDiariaActions, ReferenciaMensalActions} from '../../models/action.model';
 
 export interface ReferenciaState {
-    mes: string;
+    dia: string;
 }
 
 export const initialState: ReferenciaState = {
-    mes: moment().format('YYYY-MM'),
+    dia: moment().format('YYYY-MM-DD'),
 };
 
 export function referenciaReducer(state = initialState, action: GenericAction): ReferenciaState {
 
     switch (action.type) {
 
-        case ReferenciaActions.ANTERIOR: {
-            const actual = moment(state.mes).startOf('month');
+        case ReferenciaMensalActions.ANTERIOR: {
+            const actual = moment(state.dia).startOf('month');
 
             return {
                 ...state,
-                mes: actual.add(-1, 'month').format('YYYY-MM')
+                dia: actual.add(-1, 'month').format('YYYY-MM-DD')
             };
         }
 
-        case ReferenciaActions.PROXIMO: {
-            const actual = moment(state.mes).startOf('month');
+        case ReferenciaMensalActions.PROXIMO: {
+            const actual = moment(state.dia).startOf('month');
 
             return {
                 ...state,
-                mes: actual.add(1, 'month').format('YYYY-MM')
+                dia: actual.add(1, 'month').format('YYYY-MM-DD')
             };
         }
 
-        case ReferenciaActions.REFERENCIA: {
+        case ReferenciaMensalActions.REFERENCIA: {
+            const dia = moment(action.payload).startOf('month');
+
             return {
                 ...state,
-                mes: action.payload
+                dia: dia.format('YYYY-MM-DD')
+            };
+        }
+
+        case ReferenciaDiariaActions.ANTERIOR: {
+            const actual = moment(state.dia).startOf('day');
+
+            return {
+                ...state,
+                dia: actual.add(-1, 'day').format('YYYY-MM-DD')
+            };
+        }
+
+        case ReferenciaDiariaActions.PROXIMO: {
+            const actual = moment(state.dia).startOf('day');
+
+            return {
+                ...state,
+                dia: actual.add(1, 'day').format('YYYY-MM-DD')
+            };
+        }
+
+        case ReferenciaDiariaActions.REFERENCIA: {
+            return {
+                ...state,
+                dia: action.payload
             };
         }
 

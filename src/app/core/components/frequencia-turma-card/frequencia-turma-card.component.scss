@@ -1,0 +1,9 @@
+mat-card:not(last-child) {
+	margin-bottom: 7px;
+
+	mat-card-header {
+		div.mat-card-header-text {
+			margin: 0;
+		}
+	}
+}

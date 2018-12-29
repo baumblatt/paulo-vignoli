@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import {Dividendo} from '../../models/dividendo.model';
 import {getCoreState} from '../reducers/global.reducer';
 import {getAlunos} from './alunos.selectors';
-import {getReferencia} from './referencia.selectors';
+import {getReferenciaMensal} from './referencia.selectors';
 
 export const getPagamentosState = createSelector(
     getCoreState,
@@ -39,7 +39,7 @@ export const getDividendos = createSelector(
 
 export const getPendentes = createSelector(
     getAlunos,
-    getReferencia,
+    getReferenciaMensal,
     getPagamentosPorReferencia,
     (alunos, referencia, pagamentos) => alunos.filter(aluno => {
         let pendente = !!aluno.pagamento;

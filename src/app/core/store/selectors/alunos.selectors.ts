@@ -7,7 +7,7 @@ import {getRouterState} from '../../../store/reducers/global.reducer';
 import {Aluno} from '../../models/aluno.model';
 import {alunosAdapter} from '../reducers/alunos.reducer';
 import {getCoreState} from '../reducers/global.reducer';
-import {getReferencia} from './referencia.selectors';
+import {getReferenciaMensal} from './referencia.selectors';
 
 const fuseOptions: FuseOptions<Aluno> = {
     keys: ['nome', 'responsavel'],
@@ -57,7 +57,7 @@ export const getAlunosFiltrados = createSelector(
 
 export const getAniversariantes = createSelector(
     getAlunos,
-    getReferencia,
+    getReferenciaMensal,
     (alunos, referencia) => alunos.filter(
         aluno => !aluno.nascimento ? false : moment(referencia).month() === moment(aluno.nascimento).month()
     ).sort((a, b) => moment(a.nascimento).date() > moment(b.nascimento).date() ? 1 : -1)

@@ -1,7 +1,9 @@
 import {createSelector} from '@ngrx/store';
+import * as moment from 'moment';
 import {DiaSemana} from '../../models/turma.model';
 import {getCoreState} from '../reducers/global.reducer';
 import {turmasAdapter} from '../reducers/turmas.reducer';
+import {getReferenciaDiaria} from './referencia.selectors';
 
 export const getTurmasState = createSelector(
     getCoreState,
@@ -16,6 +18,29 @@ export const getTurmas = createSelector(
 export const getTurma = (id) => createSelector(
     getTurmasState,
     state => state.entities[id]
+);
+
+export const getTurmaReferenciaDiaria = createSelector(
+    getTurmas,
+    getReferenciaDiaria,
+    (turmas, referencia) => {
+        const dia = moment(referencia).startOf('day').get('weekday');
+
+        switch (dia) {
+            case 1:
+                return turmas.filter(turma => turma.dia === DiaSemana.segunda);
+            case 2:
+                return turmas.filter(turma => turma.dia === DiaSemana.terca);
+            case 3:
+                return turmas.filter(turma => turma.dia === DiaSemana.quarta);
+            case 4:
+                return turmas.filter(turma => turma.dia === DiaSemana.quinta);
+            case 5:
+                return turmas.filter(turma => turma.dia === DiaSemana.sexta);
+        }
+
+        return [];
+    }
 );
 
 export const getTurmasSegunda = createSelector(
