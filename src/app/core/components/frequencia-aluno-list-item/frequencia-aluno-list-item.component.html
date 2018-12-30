@@ -1,5 +1,5 @@
 <mat-list-item class="no-padding">
-  <img matListAvatar [src]="'/assets/images/no-photo.png'">
-  <h3 matLine>{{aluno.nome}}</h3>
-  <h4 matLine>{{aluno.responsavel ? 'Responsável: ' + aluno.responsavel : ''}}</h4>
+  <img matListAvatar [src]="frequencia.aluno.avatar || '/assets/images/no-photo.png'">
+  <h3 matLine>{{frequencia.aluno.nome}}</h3>
+  <h4 matLine>{{frequencia.aluno.responsavel ? 'Responsável: ' + frequencia.aluno.responsavel : ''}}</h4>
 </mat-list-item>

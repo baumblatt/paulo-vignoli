@@ -26,14 +26,19 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {AlunosListComponent} from './components/alunos-list/alunos-list.component';
 import {AniversariantesComponent} from './components/aniversariantes/aniversariantes.component';
+import {FrequenciaAlunoListItemComponent} from './components/frequencia-aluno-list-item/frequencia-aluno-list-item.component';
+import {FrequenciaDiariaCardComponent} from './components/frequencia-turma-card/frequencia-diaria-card.component';
+import {FrequenciaDiariaCardsComponent} from './components/frequencia-turmas-cards/frequencia-diaria-cards.component';
 import {LayoutComponent} from './components/layout/layout.component';
 import {PagamentoComponent} from './components/pagamento/pagamento.component';
 import {PagamentosListComponent} from './components/pagamentos-list/pagamentos-list.component';
 import {TurmaCardComponent} from './components/turma-card/turma-card.component';
 import {TurmaComponent} from './components/turma/turma.component';
 import {TurmasCardsComponent} from './components/turmas-cards/turmas-cards.component';
+import {AlunoThumbnailComponent} from './containers/aluno-thumbnail/aluno-thumbnail.component';
 import {AlunoComponent} from './containers/aluno/aluno.component';
 import {AlunosComponent} from './containers/alunos/alunos.component';
+import {FrequenciaComponent} from './containers/frequencia/frequencia.component';
 import {HomeComponent} from './containers/home/home.component';
 import {LoginComponent} from './containers/login/login.component';
 import {TurmasComponent} from './containers/turmas/turmas.component';
@@ -46,11 +51,6 @@ import {PagamentoEffects} from './store/effects/pagamento.effects';
 import {TurmasEffects} from './store/effects/turmas.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
-import { AlunoThumbnailComponent } from './containers/aluno-thumbnail/aluno-thumbnail.component';
-import { FrequenciaComponent } from './containers/frequencia/frequencia.component';
-import { FrequenciaTurmasCardsComponent } from './components/frequencia-turmas-cards/frequencia-turmas-cards.component';
-import { FrequenciaTurmaCardComponent } from './components/frequencia-turma-card/frequencia-turma-card.component';
-import { FrequenciaAlunoListItemComponent } from './components/frequencia-aluno-list-item/frequencia-aluno-list-item.component';
 
 @NgModule({
     imports: [
@@ -95,8 +95,8 @@ import { FrequenciaAlunoListItemComponent } from './components/frequencia-aluno-
         TurmaCardComponent,
         AlunoThumbnailComponent,
         FrequenciaComponent,
-        FrequenciaTurmasCardsComponent,
-        FrequenciaTurmaCardComponent,
+        FrequenciaDiariaCardsComponent,
+        FrequenciaDiariaCardComponent,
         FrequenciaAlunoListItemComponent,
     ],
     entryComponents: [PagamentoComponent, TurmaComponent],

@@ -1,17 +1,17 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {GenericAction} from '../../models/action.model';
-import {Turma} from '../../models/turma.model';
+import {FrequenciasDiaria} from '../../models/frequencia-diaria.model';
 
 @Component({
-    selector: 'app-frequencia-turmas-cards',
-    templateUrl: './frequencia-turmas-cards.component.html',
-    styleUrls: ['./frequencia-turmas-cards.component.scss'],
+    selector: 'app-frequencia-diaria-cards',
+    templateUrl: './frequencia-diaria-cards.component.html',
+    styleUrls: ['./frequencia-diaria-cards.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FrequenciaTurmasCardsComponent {
+export class FrequenciaDiariaCardsComponent {
 
     @Input()
-    turmas: Turma[];
+    frequenciasDiarias: FrequenciasDiaria[];
 
     @Output()
     actionEmitter: EventEmitter<GenericAction> = new EventEmitter<GenericAction>();

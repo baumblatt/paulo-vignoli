@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      {{frequenciaDiaria.turma.horario}}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list *ngIf="frequenciaDiaria.frequencias && frequenciaDiaria.frequencias.length; else semAlunos">
+      <app-frequencia-aluno-list-item *ngFor="let frequencia of frequenciaDiaria.frequencias" [frequencia]="frequencia"></app-frequencia-aluno-list-item>
+    </mat-list>
+    <ng-template #semAlunos>
+      Não há alunos nesta turma.
+    </ng-template>
+  </mat-card-content>
+</mat-card>

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {Frequencia} from '../../models/frequencia.model';
+import {FrequenciaDiaria} from '../../models/frequencia-diaria.model';
 
 @Component({
     selector: 'app-frequencia-aluno-list-item',
@@ -10,9 +10,7 @@ import {Frequencia} from '../../models/frequencia.model';
 export class FrequenciaAlunoListItemComponent implements OnInit {
 
     @Input()
-    frequencia$: Frequencia;
-
-    aluno = {};
+    frequencia: FrequenciaDiaria;
 
     constructor() {
     }

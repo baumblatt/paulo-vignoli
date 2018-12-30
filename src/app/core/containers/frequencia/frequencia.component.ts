@@ -4,10 +4,10 @@ import {select, Store} from '@ngrx/store';
 import {Observable, Subscription} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
 import {GenericAction, ReferenciaDiariaActions} from '../../models/action.model';
-import {Turma} from '../../models/turma.model';
+import {FrequenciasDiaria} from '../../models/frequencia-diaria.model';
 import {FrequenciaState} from '../../store/reducers/frequencia.reducer';
+import {getFrequenciasReferenciaDiaria} from '../../store/selectors/frequencia.selectors';
 import {getReferenciaDiaria} from '../../store/selectors/referencia.selectors';
-import {getTurmaReferenciaDiaria} from '../../store/selectors/turmas.selectors';
 
 @Component({
     selector: 'app-frequencia',
@@ -19,7 +19,7 @@ export class FrequenciaComponent implements OnInit, OnDestroy {
     referencia$: Observable<string>;
     referencia = new FormControl('');
 
-    turmas$: Observable<Turma[]>;
+    frequenciasDiaria$: Observable<FrequenciasDiaria[]>;
 
     subscriptions: Subscription[] = [];
 
@@ -28,7 +28,7 @@ export class FrequenciaComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.referencia$ = this.store.pipe(select(getReferenciaDiaria));
-        this.turmas$ = this.store.pipe(select(getTurmaReferenciaDiaria));
+        this.frequenciasDiaria$ = this.store.pipe(select(getFrequenciasReferenciaDiaria));
 
         this.subscriptions.push(this.referencia$.pipe(
             distinctUntilChanged(),
