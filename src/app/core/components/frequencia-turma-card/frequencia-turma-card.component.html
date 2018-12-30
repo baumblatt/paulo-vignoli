@@ -5,6 +5,11 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    Em breve controle de frequência
+    <mat-list *ngIf="turma.alunos && turma.alunos.length; else semAlunos">
+      <app-frequencia-aluno-list-item [frequencia$]="undefined"></app-frequencia-aluno-list-item>
+    </mat-list>
+    <ng-template #semAlunos>
+      Não há alunos nesta turma.
+    </ng-template>
   </mat-card-content>
 </mat-card>

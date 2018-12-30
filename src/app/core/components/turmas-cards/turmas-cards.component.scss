@@ -1,5 +1,11 @@
 div.turmas {
 	padding: 7px;
+
+	mat-card.msg {
+		mat-card-content {
+			text-align: center;
+		}
+	}
 }
 
 mat-option {

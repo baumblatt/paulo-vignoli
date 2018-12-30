@@ -25,6 +25,10 @@ body.app-theme {
     box-sizing: border-box;
     height: calc(100vh - 64px);
 
+    h1.mat-h1 {
+      margin: 7px;
+    }
+
     @media (max-width: 599px) {
       height: calc(100vh - 56px);
     }

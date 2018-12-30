@@ -1,3 +1,12 @@
 <div class="turmas">
-  <app-frequencia-turma-card *ngFor="let turma of turmas" [turma]="turma" (actionEmitter)="emit($event)"></app-frequencia-turma-card>
+  <ng-container *ngIf="turmas && turmas.length; else semTurmas" >
+    <app-frequencia-turma-card *ngFor="let turma of turmas" [turma]="turma" (actionEmitter)="emit($event)"></app-frequencia-turma-card>
+  </ng-container>
+  <ng-template #semTurmas>
+    <mat-card class="msg">
+      <mat-card-content>
+        Não há turmas para esta data.
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
 </div>

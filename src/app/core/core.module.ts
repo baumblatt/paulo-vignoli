@@ -50,6 +50,7 @@ import { AlunoThumbnailComponent } from './containers/aluno-thumbnail/aluno-thum
 import { FrequenciaComponent } from './containers/frequencia/frequencia.component';
 import { FrequenciaTurmasCardsComponent } from './components/frequencia-turmas-cards/frequencia-turmas-cards.component';
 import { FrequenciaTurmaCardComponent } from './components/frequencia-turma-card/frequencia-turma-card.component';
+import { FrequenciaAlunoListItemComponent } from './components/frequencia-aluno-list-item/frequencia-aluno-list-item.component';
 
 @NgModule({
     imports: [
@@ -96,6 +97,7 @@ import { FrequenciaTurmaCardComponent } from './components/frequencia-turma-card
         FrequenciaComponent,
         FrequenciaTurmasCardsComponent,
         FrequenciaTurmaCardComponent,
+        FrequenciaAlunoListItemComponent,
     ],
     entryComponents: [PagamentoComponent, TurmaComponent],
     providers: [AuthGuard]
