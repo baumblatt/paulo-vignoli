@@ -6,7 +6,7 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list *ngIf="frequenciaDiaria.frequencias && frequenciaDiaria.frequencias.length; else semAlunos">
-      <app-frequencia-aluno-list-item *ngFor="let frequencia of frequenciaDiaria.frequencias" [frequencia]="frequencia"></app-frequencia-aluno-list-item>
+      <app-frequencia-aluno-list-item *ngFor="let frequencia of frequenciaDiaria.frequencias" [frequencia]="frequencia" (actionEmitter)="emit($event)"></app-frequencia-aluno-list-item>
     </mat-list>
     <ng-template #semAlunos>
       Não há alunos nesta turma.
