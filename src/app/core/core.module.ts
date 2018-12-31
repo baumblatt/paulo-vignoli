@@ -47,6 +47,7 @@ import {CoreRoutingModule} from './core-routing.module';
 import {AuthGuard} from './guards/auth.guard';
 import {AlunosEffects} from './store/effects/alunos.effects';
 import {AvatarEffects} from './store/effects/avatar.effects';
+import {FrequenciaEffects} from './store/effects/frequencia.effects';
 import {PagamentoEffects} from './store/effects/pagamento.effects';
 import {TurmasEffects} from './store/effects/turmas.effects';
 import {UIEffects} from './store/effects/ui.effects';
@@ -56,7 +57,7 @@ import {globalReducer} from './store/reducers/global.reducer';
     imports: [
         CommonModule,
         CoreRoutingModule,
-        EffectsModule.forFeature([AlunosEffects, AvatarEffects, PagamentoEffects, TurmasEffects, UIEffects]),
+        EffectsModule.forFeature([AlunosEffects, AvatarEffects, FrequenciaEffects, PagamentoEffects, TurmasEffects, UIEffects]),
         StoreModule.forFeature('core', globalReducer),
         FlexLayoutModule,
         LayoutModule,
