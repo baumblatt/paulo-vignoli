@@ -1,5 +1,19 @@
 <mat-list-item class="no-padding">
-  <img matListAvatar [src]="frequencia.aluno.avatar || '/assets/images/no-photo.png'">
-  <h3 matLine>{{frequencia.aluno.nome}}</h3>
-  <h4 matLine>{{frequencia.aluno.responsavel ? 'Responsável: ' + frequencia.aluno.responsavel : ''}}</h4>
+	<img matListAvatar [src]="frequencia.aluno.avatar || '/assets/images/no-photo.png'">
+	<h3 matLine>{{frequencia.aluno.nome}}</h3>
+	<h4 matLine>{{frequencia.aluno.responsavel ? 'Responsável: ' + frequencia.aluno.responsavel : ''}}</h4>
+	<div class="buttons" fxLayout="row">
+		<div class="button" fxLayout="column">
+			<button mat-icon-button (click)="presente(frequencia)" [color]="frequencia.frequencia.presente ? 'primary' : ''" type="button">
+				<mat-icon>person</mat-icon>
+			</button>
+			<span>Presente</span>
+		</div>
+		<div class="button" fxLayout="column">
+			<button mat-icon-button (click)="ausente(frequencia)" [color]="frequencia.frequencia.ausente ? 'primary' : ''" type="button">
+				<mat-icon>person_outline</mat-icon>
+			</button>
+			<span>Ausente</span>
+		</div>
+	</div>
 </mat-list-item>

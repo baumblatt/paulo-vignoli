@@ -1,18 +1,21 @@
-import {GenericAction} from '../../models/action.model';
+import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
+import {FrequenciaActions, GenericAction} from '../../models/action.model';
 import {Frequencia} from '../../models/frequencia.model';
 
-export interface FrequenciaState {
-    frequencias: Frequencia[];
+export const frequenciaAdapter: EntityAdapter<Frequencia> = createEntityAdapter<Frequencia>({
+    selectId: (a) => a.id,
+    sortComparer: false,
+});
+
+export interface FrequenciaState extends EntityState<Frequencia> {
 }
 
-export const initialState: FrequenciaState = {
-    frequencias: [],
-};
-
-export function frequenciaReducer(state = initialState, action: GenericAction): FrequenciaState {
+export function frequenciaReducer(state = frequenciaAdapter.getInitialState(), action: GenericAction): FrequenciaState {
 
     switch (action.type) {
-
+        case FrequenciaActions.LISTAR: {
+            return frequenciaAdapter.addAll(action.payload, state);
+        }
 
         default: {
             return state;

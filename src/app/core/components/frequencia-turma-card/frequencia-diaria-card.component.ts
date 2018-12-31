@@ -16,4 +16,7 @@ export class FrequenciaDiariaCardComponent {
     @Output()
     actionEmitter: EventEmitter<GenericAction> = new EventEmitter<GenericAction>();
 
+    emit(action: GenericAction) {
+        this.actionEmitter.emit(action);
+    }
 }

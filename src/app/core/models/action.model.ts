@@ -17,6 +17,7 @@ export enum AvatarActions {
 
 export enum FrequenciaActions {
     LISTAR = '[Frequencia] Listar frequencia.',
+    ATUALIZAR = '[Frequencia] Atualizar frequencia.'
 }
 
 export enum PagamentoActions {
@@ -58,6 +59,15 @@ export enum UIActions {
 }
 
 export interface GenericAction extends Action {
-    type: AlunosAction | AvatarActions | PagamentoActions | ReferenciaDiariaActions | ReferenciaMensalActions | TurmasAction | UIActions | 'ROUTER_NAVIGATION';
+    type:
+        | AlunosAction
+        | AvatarActions
+        | FrequenciaActions
+        | PagamentoActions
+        | ReferenciaDiariaActions
+        | ReferenciaMensalActions
+        | TurmasAction
+        | UIActions
+        | 'ROUTER_NAVIGATION';
     payload?: any;
 }

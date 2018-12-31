@@ -1,8 +1,8 @@
 export class Frequencia {
     id?: string;
     dia: string;
-    turma: string;
     aluno: string;
+    turma: string;
     presente: boolean;
     ausente: boolean;
 }
