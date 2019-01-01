@@ -50,7 +50,7 @@ export class TurmasEffects {
         map(() => ({
                 type: UIActions.SNACKBAR, payload: {
                     message: 'Turma incluída com sucesso', config: {
-                        duration: 4000, panelClass: ['mat-snack-bar-success']
+                        duration: 3000, panelClass: ['mat-snack-bar-success']
                     }
                 }
             }
@@ -68,7 +68,7 @@ export class TurmasEffects {
                 map(() => ({
                         type: UIActions.SNACKBAR, payload: {
                             message: 'Aluno adicionado com sucesso', config: {
-                                duration: 4000, panelClass: ['mat-snack-bar-success']
+                                duration: 3000, panelClass: ['mat-snack-bar-success']
                             }
                         }
                     }
@@ -88,7 +88,7 @@ export class TurmasEffects {
                 map(() => ({
                         type: UIActions.SNACKBAR, payload: {
                             message: 'Aluno removido com sucesso', config: {
-                                duration: 4000, panelClass: ['mat-snack-bar-success']
+                                duration: 3000, panelClass: ['mat-snack-bar-success']
                             }
                         }
                     }
@@ -105,7 +105,7 @@ export class TurmasEffects {
             map(() => ({
                     type: UIActions.SNACKBAR, payload: {
                         message: 'Turma excluída com sucesso', config: {
-                            duration: 4000, panelClass: ['mat-snack-bar-success']
+                            duration: 3000, panelClass: ['mat-snack-bar-success']
                         }
                     }
                 }
