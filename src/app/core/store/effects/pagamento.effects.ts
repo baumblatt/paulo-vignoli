@@ -42,7 +42,7 @@ export class PagamentoEffects {
         map(() => ({
                 type: UIActions.SNACKBAR, payload: {
                     message: 'Pagamento incluído com sucesso', config: {
-                        duration: 4000, panelClass: ['mat-snack-bar-success']
+                        duration: 3000, panelClass: ['mat-snack-bar-success']
                     }
                 }
             }

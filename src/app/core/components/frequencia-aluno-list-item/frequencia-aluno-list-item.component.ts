@@ -27,7 +27,8 @@ export class FrequenciaAlunoListItemComponent {
     atualizar(frequencia: FrequenciaDiaria, presente: boolean, ausente: boolean) {
         this.actionEmitter.emit({
             type: FrequenciaActions.ATUALIZAR,
-            payload: {...frequencia, frequencia: {...frequencia.frequencia, presente, ausente}}
+            payload: {...frequencia.frequencia, presente, ausente}
         });
     }
-};
+}
+

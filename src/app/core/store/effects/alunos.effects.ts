@@ -36,7 +36,7 @@ export class AlunosEffects {
                 }, {
                     type: UIActions.SNACKBAR, payload: {
                         message: 'Aluno salvo com sucesso', config: {
-                            duration: 4000, panelClass: ['mat-snack-bar-success']
+                            duration: 3000, panelClass: ['mat-snack-bar-success']
                         }
                     }
                 }, {
@@ -45,7 +45,7 @@ export class AlunosEffects {
                 catchError((error) => from([{
                     type: UIActions.SNACKBAR, payload: {
                         message: 'Ocorreu um problema ao processar sua requisição', config: {
-                            duration: 4000, panelClass: ['mat-snack-bar-warn']
+                            duration: 3000, panelClass: ['mat-snack-bar-warn']
                         }
                     }
                 }, {

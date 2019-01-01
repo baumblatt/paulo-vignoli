@@ -1,7 +1,7 @@
 import {createSelector} from '@ngrx/store';
 import {getCoreState} from '../reducers/global.reducer';
 import {getAlunosEntities} from './alunos.selectors';
-import {getReferenciaDiaria} from './referencia.selectors';
+import {getReferenciaDiaria, getReferenciaMensal} from './referencia.selectors';
 import {getTurmaReferenciaDiaria} from './turmas.selectors';
 
 export const getFrequenciaState = createSelector(
@@ -16,10 +16,11 @@ export const getFrequenciasEntities = createSelector(
 
 export const getFrequenciasReferenciaDiaria = createSelector(
     getReferenciaDiaria,
+    getReferenciaMensal,
     getFrequenciasEntities,
     getTurmaReferenciaDiaria,
     getAlunosEntities,
-    (dia, frequencias, turmas, alunos) => {
+    (dia, mes, frequencias, turmas, alunos) => {
         return turmas.map(turma => {
             return {
                 turma,
@@ -30,7 +31,7 @@ export const getFrequenciasReferenciaDiaria = createSelector(
                     return {
                         aluno: alunos[aluno],
                         frequencia: frequencia ? frequencia : {
-                            id, dia, aluno, turma: turma.id,
+                            id, dia, mes, aluno, turma: turma.id,
                             presente: false,
                             ausente: false,
                         }
