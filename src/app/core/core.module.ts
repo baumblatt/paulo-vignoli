@@ -11,6 +11,7 @@ import {
     MatDialogModule,
     MatGridListModule,
     MatIconModule,
+    MatIconRegistry,
     MatInputModule,
     MatListModule,
     MatMenuModule,
@@ -22,6 +23,7 @@ import {
     MatTabsModule,
     MatToolbarModule
 } from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {AlunosListComponent} from './components/alunos-list/alunos-list.component';
@@ -104,4 +106,14 @@ import {globalReducer} from './store/reducers/global.reducer';
     providers: [AuthGuard]
 })
 export class CoreModule {
+    constructor(private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
+        iconRegistry.getNamedSvgIcon('whats').subscribe(
+            () => console.log('icons already registered!'),
+            () => {
+                console.log('registering icons!');
+                this.iconRegistry.addSvgIcon('whats',
+                    this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/whats-app.svg'));
+            }
+        );
+    }
 }

@@ -98,6 +98,13 @@
 					padding-right: 0;
 				}
 			}
+
+			mat-list-item.mat-list-item.mat-list-item-with-avatar {
+				//.mat-list-item-content .mat-list-text, .mat-list-base .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text, .mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text, .mat-list-base .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text
+				div.mat-list-item-content .mat-list-text {
+					padding-left: 8px;
+				}
+			}
 		}
 
 		// --------------------

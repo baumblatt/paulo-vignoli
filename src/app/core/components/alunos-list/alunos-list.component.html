@@ -1,9 +1,11 @@
 <mat-list [style.minHeight]="maxHeight" [style.maxHeight]="maxHeight">
 	<cdk-virtual-scroll-viewport itemSize="72" [style.minHeight]="maxHeight" [style.maxHeight]="maxHeight">
-		<mat-list-item *cdkVirtualFor="let aluno of alunos" [routerLink]="['/core/aluno', aluno.id]">
-			<img matListAvatar [src]="aluno.avatar || '/assets/images/no-photo.png'">
-			<h3 matLine>{{aluno.nome}}</h3>
-			<h4 matLine>{{aluno.responsavel ? 'Responsável: ' + aluno.responsavel : ''}}</h4>
+		<mat-list-item class="no-padding" *cdkVirtualFor="let aluno of alunos">
+			<img matListAvatar [src]="aluno.avatar || '/assets/images/no-photo.png'" [routerLink]="['/core/aluno', aluno.id]">
+			<h5 matLine [routerLink]="['/core/aluno', aluno.id]">{{aluno.nome}}</h5>
+			<h6 matLine>{{aluno.responsavel ? 'Responsável: ' + aluno.responsavel : ''}}</h6>
+			<a mat-icon-button [href]="'tel:'+aluno.telefone"><mat-icon>phone</mat-icon></a>
+			<a mat-icon-button [href]="'https://wa.me/+55021'+aluno.telefone"><mat-icon svgIcon="whats"></mat-icon></a>
 		</mat-list-item>
 	</cdk-virtual-scroll-viewport>
 </mat-list>
