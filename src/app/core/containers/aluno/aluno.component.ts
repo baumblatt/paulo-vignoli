@@ -34,6 +34,7 @@ export class AlunoComponent implements OnInit {
         email: [null, Validators.email],
         nascimento: null,
         pagamento: [null, Validators.required],
+        observacao: null
     });
 
     constructor(private store: Store<CoreState>, private fb: FormBuilder) {
@@ -45,7 +46,7 @@ export class AlunoComponent implements OnInit {
             filter(aluno => !!aluno),
             take(1),
         ).subscribe(aluno =>
-            this.alunoForm.setValue(aluno)
+            this.alunoForm.setValue({observacao: '', ...aluno})
         );
 
         this.avatarState$ = this.store.pipe(

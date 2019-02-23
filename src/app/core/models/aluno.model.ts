@@ -5,5 +5,6 @@ export class Aluno {
     telefone = '';
     nascimento?: Date;
     pagamento: number;
+    observacao: '';
     avatar = '/assets/images/no-photo.png';
 }
