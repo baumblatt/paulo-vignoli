@@ -1,44 +1,25 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {environment} from '../../../../environments/environment';
 import {Router} from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-    loginForm: FormGroup = this.fb.group({
-        email: ['', [Validators.email, Validators.required]],
-        link: [window.location.search ? window.location.href : ''],
-    });
+export class LoginComponent {
+    constructor(public auth: AngularFireAuth, private router: Router) {
 
-    constructor(public auth: AngularFireAuth, private fb: FormBuilder, private router: Router) {
-
-    }
-
-    ngOnInit() {
     }
 
     entrar() {
-        if (this.loginForm.get('email').valid) {
-            if (!this.loginForm.get('link').value) {
-                this.auth.auth.sendSignInLinkToEmail(this.loginForm.get('email').value, {
-                    url: environment.login,
-                    handleCodeInApp: true,
-                }).catch();
+        this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(user => {
+            if (!!user) {
+                this.router.navigate(['core', 'home']).catch();
             } else {
-                this.auth.auth.signInWithEmailLink(this.loginForm.get('email').value, this.loginForm.get('link').value).then(
-                    (user) => {
-                        console.log(user);
-                        this.router.navigate(['core', 'home']).catch();
-                    }
-                ).catch(
-                    reason => console.log(reason)
-                );
+                console.log('Não retornou usuário após tentativa de login.');
             }
-        }
+        });
     }
 }

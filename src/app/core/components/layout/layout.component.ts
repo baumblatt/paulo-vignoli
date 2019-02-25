@@ -1,5 +1,7 @@
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Component, ViewChild} from '@angular/core';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {filter, map, take} from 'rxjs/operators';
 
@@ -17,7 +19,7 @@ export class LayoutComponent {
         map(result => result.matches)
     );
 
-    constructor(private breakpointObserver: BreakpointObserver) {
+    constructor(public auth: AngularFireAuth, private breakpointObserver: BreakpointObserver, private router: Router) {
     }
 
     activated() {
@@ -27,4 +29,12 @@ export class LayoutComponent {
         ).subscribe(() => this.drawer.close());
     }
 
+    sair() {
+        this.activated();
+        this.auth.auth.signOut().then(
+            () => this.router.navigate(['/core', 'login']).catch()
+        ).catch(
+            () => this.router.navigate(['/core', 'login']).catch()
+        );
+    }
 }

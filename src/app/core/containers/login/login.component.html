@@ -2,28 +2,14 @@
 	<span routerLink="/core/home">Paulo Vignoli</span>
 </mat-toolbar>
 <div class="container-component">
-	<form [formGroup]="loginForm" (submit)="entrar()">
 		<mat-card>
 			<mat-card-header>
 				<mat-card-title>
 					Bem-Vindo
 				</mat-card-title>
 			</mat-card-header>
-			<mat-card-content fxLayout="column" fxLayoutAlign="start center">
-				<mat-form-field>
-					<input matInput placeholder="Email" formControlName="email">
-				</mat-form-field>
-				<mat-form-field>
-					<input matInput placeholder="Cole aqui o link enviado por email" formControlName="link">
-				</mat-form-field>
-				<p>
-					Informe o seu email e clique no botão <code>Enviar</code>, você receberá um em seu email um link para validação.
-					Ao retornar através desde, preencha o email com o mesmo valor anterior e clique em <code>Enviar</code> novamente.
-				</p>
-			</mat-card-content>
 			<mat-card-actions>
-				<button mat-raised-button type="submit">Enviar</button>
+				<button mat-raised-button color="accent" type="button" (click)="entrar()">Entrar</button>
 			</mat-card-actions>
 		</mat-card>
-	</form>
 </div>
