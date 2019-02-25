@@ -20,6 +20,10 @@
       <h1 class="mat-h1">Sexta-feira</h1>
       <app-turmas-cards [turmas]="sexta | async" [alunos]="alunos | async" (actionEmitter)="dispatch($event)"></app-turmas-cards>
     </mat-tab>
+    <mat-tab label="Sáb">
+      <h1 class="mat-h1">Sábado</h1>
+      <app-turmas-cards [turmas]="sabado | async" [alunos]="alunos | async" (actionEmitter)="dispatch($event)"></app-turmas-cards>
+    </mat-tab>
   </mat-tab-group>
   <button mat-mini-fab (click)="nova()"><mat-icon>add</mat-icon></button>
 </div>

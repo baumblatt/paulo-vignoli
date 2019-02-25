@@ -30,6 +30,21 @@
 		mat-form-field {
 			width: 100%;
 		}
+
+		// ---------------------
+		// Tab customizations
+		// ---------------------
+		mat-tab-group {
+			mat-tab-header {
+				.mat-tab-label {
+					@media (max-width: 599px) {
+						min-width: 50px;
+						padding: 0 12px;
+					}
+				}
+			}
+		}
+
 		// ---------------------
 		// Grid customizations
 		// ---------------------

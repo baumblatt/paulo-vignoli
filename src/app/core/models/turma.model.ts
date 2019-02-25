@@ -5,7 +5,8 @@ export enum DiaSemana {
     terca = 'Terça-feira',
     quarta = 'Quarta-feira',
     quinta = 'Quinta-feira',
-    sexta = 'Sexta-feira'
+    sexta = 'Sexta-feira',
+    sabado = 'Sábado'
 }
 
 export class Turma {

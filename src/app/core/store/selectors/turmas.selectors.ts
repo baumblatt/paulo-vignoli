@@ -47,19 +47,28 @@ export const getTurmasSegunda = createSelector(
     getTurmas,
     turmas => turmas.filter(turma => turma.dia === DiaSemana.segunda)
 );
+
 export const getTurmasTerca = createSelector(
     getTurmas,
     turmas => turmas.filter(turma => turma.dia === DiaSemana.terca)
 );
+
 export const getTurmasQuarta = createSelector(
     getTurmas,
     turmas => turmas.filter(turma => turma.dia === DiaSemana.quarta)
 );
+
 export const getTurmasQuinta = createSelector(
     getTurmas,
     turmas => turmas.filter(turma => turma.dia === DiaSemana.quinta)
 );
+
 export const getTurmasSexta = createSelector(
     getTurmas,
     turmas => turmas.filter(turma => turma.dia === DiaSemana.sexta)
+);
+
+export const getTurmasSabado = createSelector(
+    getTurmas,
+    turmas => turmas.filter(turma => turma.dia === DiaSemana.sabado)
 );
