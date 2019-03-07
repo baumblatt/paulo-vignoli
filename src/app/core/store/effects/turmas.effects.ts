@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {MatDialog} from '@angular/material';
 import {Actions, Effect, ofType} from '@ngrx/effects';
+import {ROUTER_NAVIGATION} from '@ngrx/router-store';
 import {select, Store} from '@ngrx/store';
 import {from, of} from 'rxjs';
 import {catchError, exhaustMap, map, pluck, switchMap, withLatestFrom} from 'rxjs/operators';
@@ -17,16 +18,18 @@ export class TurmasEffects {
     }
 
     @Effect()
-    listar = this.db.collection('turmas').valueChanges().pipe(
-        map((turmas) => ({
-            type: TurmasAction.LISTAR,
-            payload: turmas
-        })),
-        catchError((error) => of({
-            type: TurmasAction.ERROR,
-            payload: error
-        })),
-    );
+    listar = this.actions$.pipe(
+        ofType(ROUTER_NAVIGATION),
+        exhaustMap(() => this.db.collection('turmas').valueChanges().pipe(
+            map((turmas) => ({
+                type: TurmasAction.LISTAR,
+                payload: turmas
+            })),
+            catchError((error) => of({
+                type: TurmasAction.ERROR,
+                payload: error
+            })),
+        )));
 
     @Effect()
     nova = this.actions$.pipe(

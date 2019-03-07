@@ -1,9 +1,11 @@
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Component, ViewChild} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {filter, map, take} from 'rxjs/operators';
+import {Navigation} from '../../../store/actions/router.action';
+import {CoreState} from '../../store/reducers/global.reducer';
 
 @Component({
     selector: 'app-layout',
@@ -19,7 +21,7 @@ export class LayoutComponent {
         map(result => result.matches)
     );
 
-    constructor(public auth: AngularFireAuth, private breakpointObserver: BreakpointObserver, private router: Router) {
+    constructor(public auth: AngularFireAuth, private breakpointObserver: BreakpointObserver, private store: Store<CoreState>) {
     }
 
     activated() {
@@ -32,9 +34,9 @@ export class LayoutComponent {
     sair() {
         this.activated();
         this.auth.auth.signOut().then(
-            () => this.router.navigate(['/core', 'login']).catch()
+            () => this.store.dispatch(new Navigation({path: ['/login']}))
         ).catch(
-            () => this.router.navigate(['/core', 'login']).catch()
+            () => this.store.dispatch(new Navigation({path: ['/login']}))
         );
     }
 }

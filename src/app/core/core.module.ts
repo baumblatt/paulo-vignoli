@@ -31,7 +31,6 @@ import {AniversariantesComponent} from './components/aniversariantes/aniversaria
 import {FrequenciaAlunoListItemComponent} from './components/frequencia-aluno-list-item/frequencia-aluno-list-item.component';
 import {FrequenciaDiariaCardComponent} from './components/frequencia-turma-card/frequencia-diaria-card.component';
 import {FrequenciaDiariaCardsComponent} from './components/frequencia-turmas-cards/frequencia-diaria-cards.component';
-import {LayoutComponent} from './components/layout/layout.component';
 import {PagamentoComponent} from './components/pagamento/pagamento.component';
 import {PagamentosListComponent} from './components/pagamentos-list/pagamentos-list.component';
 import {TurmaCardComponent} from './components/turma-card/turma-card.component';
@@ -42,11 +41,10 @@ import {AlunoComponent} from './containers/aluno/aluno.component';
 import {AlunosComponent} from './containers/alunos/alunos.component';
 import {FrequenciaComponent} from './containers/frequencia/frequencia.component';
 import {HomeComponent} from './containers/home/home.component';
-import {LoginComponent} from './containers/login/login.component';
+import {LayoutComponent} from './containers/layout/layout.component';
 import {TurmasComponent} from './containers/turmas/turmas.component';
 
 import {CoreRoutingModule} from './core-routing.module';
-import {AuthGuard} from './guards/auth.guard';
 import {AlunosEffects} from './store/effects/alunos.effects';
 import {AvatarEffects} from './store/effects/avatar.effects';
 import {FrequenciaEffects} from './store/effects/frequencia.effects';
@@ -91,7 +89,6 @@ import {globalReducer} from './store/reducers/global.reducer';
         AniversariantesComponent,
         PagamentoComponent,
         PagamentosListComponent,
-        LoginComponent,
         TurmasComponent,
         TurmaComponent,
         TurmasCardsComponent,
@@ -103,7 +100,6 @@ import {globalReducer} from './store/reducers/global.reducer';
         FrequenciaAlunoListItemComponent,
     ],
     entryComponents: [PagamentoComponent, TurmaComponent],
-    providers: [AuthGuard]
 })
 export class CoreModule {
     constructor(private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {

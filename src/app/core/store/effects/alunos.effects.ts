@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Actions, Effect, ofType} from '@ngrx/effects';
+import {ROUTER_NAVIGATION} from '@ngrx/router-store';
 import {from, of} from 'rxjs';
 import {catchError, exhaustMap, map, mergeMapTo, pluck} from 'rxjs/operators';
 import {AlunosAction, UIActions} from '../../models/action.model';
@@ -13,16 +14,18 @@ export class AlunosEffects {
     }
 
     @Effect()
-    listar = this.db.collection('alunos').valueChanges().pipe(
-        map((alunos) => ({
-            type: AlunosAction.LISTAR,
-            payload: alunos
-        })),
-        catchError((error) => of({
-            type: AlunosAction.ERROR,
-            payload: error
-        })),
-    );
+    listar = this.actions$.pipe(
+        ofType(ROUTER_NAVIGATION),
+        exhaustMap(() => this.db.collection('alunos').valueChanges().pipe(
+            map((alunos) => ({
+                type: AlunosAction.LISTAR,
+                payload: alunos
+            })),
+            catchError((error) => of({
+                type: AlunosAction.ERROR,
+                payload: error
+            })),
+        )));
 
     @Effect()
     salvar = this.actions$.pipe(

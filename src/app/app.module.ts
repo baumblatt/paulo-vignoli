@@ -7,6 +7,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import {MatButtonModule, MatCardModule, MatToolbarModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ServiceWorkerModule} from '@angular/service-worker';
@@ -18,6 +19,9 @@ import {environment} from '../environments/environment';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import {LoginComponent} from './components/login/login.component';
+import {AuthGuard} from './guards/auth.guard';
+import {RouterEffects} from './store/effects/router.effect';
 import {globalReducer, metaReducers} from './store/reducers/global.reducer';
 import {CustomSerializer} from './store/reducers/router.reducer';
 
@@ -25,7 +29,8 @@ registerLocaleData(localeBR, 'pt', localeBRExtra);
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        LoginComponent,
     ],
     imports: [
         BrowserModule,
@@ -36,13 +41,16 @@ registerLocaleData(localeBR, 'pt', localeBRExtra);
         AngularFireStorageModule,
         AngularFirestoreModule,
         AngularFireAuthModule,
-        EffectsModule.forRoot([]),
+        MatButtonModule,
+        MatCardModule,
+        MatToolbarModule,
+        EffectsModule.forRoot([RouterEffects]),
         StoreModule.forRoot(globalReducer, {metaReducers}),
         StoreRouterConnectingModule,
         StoreDevtoolsModule.instrument({name: 'Paulo Vignoli', logOnly: environment.production}),
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
     ],
-    providers: [{provide: RouterStateSerializer, useClass: CustomSerializer}, {provide: LOCALE_ID, useValue: 'pt_BR'}],
+    providers: [AuthGuard, {provide: RouterStateSerializer, useClass: CustomSerializer}, {provide: LOCALE_ID, useValue: 'pt_BR'}],
     bootstrap: [AppComponent]
 })
 export class AppModule {
