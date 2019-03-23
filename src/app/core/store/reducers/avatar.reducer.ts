@@ -15,10 +15,10 @@ export function avatarReducer(state = initialState, action: GenericAction): Avat
 
     switch (action.type) {
 
-        case 'ROUTER_NAVIGATION': {
+        case '@ngrx/router-store/navigated': {
             return {
                 ...state,
-                url: action.payload.event.url === '/core/novo-aluno' ? '' : state.url
+                url: action.payload.event.url === '/core/novo-aluno' || action.payload.event.url === '/core/alunos' ? '' : state.url
             };
         }
 

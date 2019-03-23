@@ -21,13 +21,13 @@ export enum FrequenciaActions {
 }
 
 export enum PagamentoActions {
-  NOVO = '[Pagamento] Novo pagamento.',
-  INSERIR = '[Pagamento] Inserir novo pagamento.',
-  POR_ALUNO = '[Pagamento] Listar pagamentos por aluno.',
-  POR_REFERENCIA = '[Pagamento] Listar pagamentos por referência.',
-  POR_DATA = '[Pagamento] Listar pagamentos por data de pagamento.',
-  SUCESSO = '[Pagamento] Transação realizada com sucesso.',
-  ERROR = '[Pagamento] Error na store de pagamentos.',
+    NOVO = '[Pagamento] Novo pagamento.',
+    INSERIR = '[Pagamento] Inserir novo pagamento.',
+    POR_ALUNO = '[Pagamento] Listar pagamentos por aluno.',
+    POR_REFERENCIA = '[Pagamento] Listar pagamentos por referência.',
+    POR_DATA = '[Pagamento] Listar pagamentos por data de pagamento.',
+    SUCESSO = '[Pagamento] Transação realizada com sucesso.',
+    ERROR = '[Pagamento] Error na store de pagamentos.',
 }
 
 export enum ReferenciaMensalActions {
@@ -68,6 +68,6 @@ export interface GenericAction extends Action {
         | ReferenciaMensalActions
         | TurmasAction
         | UIActions
-        | 'ROUTER_NAVIGATION';
+        | '@ngrx/router-store/navigated';
     payload?: any;
 }

@@ -32,6 +32,10 @@
 							<div class="col">
 								<mat-form-field>
 									<input matInput type="tel" placeholder="Telefone" formControlName="telefone">
+									<a mat-button matSuffix mat-icon-button [href]="'https://wa.me/+55021'+alunoForm.controls['telefone'].value"
+									   [disabled]="!alunoForm.controls['telefone'].value">
+										<mat-icon svgIcon="whats"></mat-icon>
+									</a>
 								</mat-form-field>
 							</div>
 						</div>

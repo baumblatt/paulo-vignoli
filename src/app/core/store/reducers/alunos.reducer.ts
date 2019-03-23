@@ -28,7 +28,7 @@ export function alunosReducer(state = initialState, action: GenericAction): Alun
         }
 
         case AvatarActions.COMPLETE: {
-            return alunosAdapter.updateOne({id: action.payload.selecionado, changes: {avatar: action.payload}}, state);
+            return alunosAdapter.updateOne({id: action.payload.selecionado, changes: {avatar: action.payload.url}}, state);
         }
 
         default: {
