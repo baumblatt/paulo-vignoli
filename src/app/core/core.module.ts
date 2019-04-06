@@ -53,6 +53,7 @@ import {PagamentoEffects} from './store/effects/pagamento.effects';
 import {TurmasEffects} from './store/effects/turmas.effects';
 import {UIEffects} from './store/effects/ui.effects';
 import {globalReducer} from './store/reducers/global.reducer';
+import { FiltroSumarioComponent } from './components/filtro-sumario/filtro-sumario.component';
 
 @NgModule({
     imports: [
@@ -100,6 +101,7 @@ import {globalReducer} from './store/reducers/global.reducer';
         FrequenciaDiariaCardsComponent,
         FrequenciaDiariaCardComponent,
         FrequenciaAlunoListItemComponent,
+        FiltroSumarioComponent,
     ],
     entryComponents: [PagamentoComponent, TurmaComponent],
 })

@@ -9,6 +9,9 @@
           </button>
         </mat-form-field>
       </mat-card-title>
+      <mat-card-subtitle>
+        <app-filtro-sumario [alunos]="alunos$ | async"></app-filtro-sumario>
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <app-alunos-list [alunos]="alunos$ | async" [maxHeight]="'calc(100vh - 190px)'"></app-alunos-list>
