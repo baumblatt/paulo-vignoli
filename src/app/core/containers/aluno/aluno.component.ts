@@ -34,6 +34,8 @@ export class AlunoComponent implements OnInit {
         email: [null, Validators.email],
         nascimento: null,
         pagamento: [null, Validators.required],
+        faixaEtaria: null,
+        ativa: null,
         observacao: null
     });
 
@@ -46,7 +48,7 @@ export class AlunoComponent implements OnInit {
             filter(aluno => !!aluno),
             take(1),
         ).subscribe(aluno =>
-            this.alunoForm.setValue({observacao: '', ...aluno})
+            this.alunoForm.setValue({observacao: '', faixaEtaria: '', ativa: true, ...aluno})
         );
 
         this.avatarState$ = this.store.pipe(

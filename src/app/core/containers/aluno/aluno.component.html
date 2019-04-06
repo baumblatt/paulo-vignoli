@@ -32,7 +32,8 @@
 							<div class="col">
 								<mat-form-field>
 									<input matInput type="tel" placeholder="Telefone" formControlName="telefone">
-									<a mat-button matSuffix mat-icon-button [href]="'https://wa.me/+55021'+alunoForm.controls['telefone'].value"
+									<a mat-button matSuffix mat-icon-button
+									   [href]="'https://wa.me/+55021'+alunoForm.controls['telefone'].value"
 									   [disabled]="!alunoForm.controls['telefone'].value">
 										<mat-icon svgIcon="whats"></mat-icon>
 									</a>
@@ -68,6 +69,25 @@
 								<mat-form-field>
 									<textarea matInput placeholder="Observação" formControlName="observacao"></textarea>
 								</mat-form-field>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<section class="section">
+									<label>Faixa Etária</label>
+									<mat-radio-group aria-label="Faixa Etária" formControlName="faixaEtaria">
+										<mat-radio-button value="Infantil">Infantil</mat-radio-button>
+										<mat-radio-button value="Adulto">Adulto</mat-radio-button>
+									</mat-radio-group>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<section class="section">
+									<label>Matrícula</label>
+									<mat-checkbox formControlName="ativa">Ativa</mat-checkbox>
+								</section>
 							</div>
 						</div>
 					</mat-card-content>
